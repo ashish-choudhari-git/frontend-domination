@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hecking Simulation</title>
+    <style>
+        body {
+            background-color: black;
+            text-align: center;
+            height: 100vh;
+            font-family: monospace;
+            color: #30c30e;
+        }
+        
+        .btn {
+            position: relative;
+            background-color: rgb(75, 232, 75);
+            height: 50px;
+            width: 90px;
+            color: white;
+            top: 50%;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        #hackBox {
+            z-index: 5;
+            margin: 20px auto;
+            display: none;
+            height: 400px;
+            width: 500px;
+            background-color: rgba(104, 101, 101, 0.799);
+            padding: 10px;
+            border: 2px solid green;
+            text-align: left;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" onclick="startHacking()">Heckkk mii</button>
+    <div id="hackBox"></div>
+
+    <script>
+        async function startHacking() {
+            let hackBox = document.getElementById("hackBox");
+            hackBox.style.display = "block";
+            hackBox.innerHTML = ''; 
+
+            var messages = [
+                "Initializing hacking",
+                "Reading all files",
+                "Cracking password",
+                "Congratulations and celebrations!"
+            ];
+
+            function getData(i) {
+                return new Promise((resolve,reject) => {
+                    setTimeout(() => {
+                        resolve(messages[i]);
+                    }, 1000);
+                });
+            }
+
+            for (let i = 0; i < messages.length; i++) {
+                            let message = await getData(i);
+
+                        
+                            let messageElement = document.createElement("p");
+                            messageElement.textContent = message;
+
+                            hackBox.appendChild(messageElement);
+
+                            let dotInterval = setInterval(() => {
+                                if (messageElement.textContent.endsWith("...")) {
+                                    messageElement.textContent = messageElement.textContent.slice(0, -3);
+                                } else {
+                                    messageElement.textContent += ".";
+                                }
+                            }, 100);
+
+                            await new Promise(resolve => setTimeout(resolve, 600));
+                            clearInterval(dotInterval);
+            }
+
+            hackBox.innerHTML += "<p>Hacking complete!</p>";
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!-- cwh code
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hecking Simulation</title>
+    <style>
+        body {
+            background-color: black;
+            text-align: center;
+          
+            height:100vh;
+            font-family: monospace;
+            color: #30c30e;
+        }
+        .btn{
+            position: relative;
+            background-color: rgb(75, 232, 75);
+            height:50px;
+            width:90px;
+            color: white;
+            top:50%;
+        }
+        div{
+            font-size:35px;
+        }
+    </style>
+</head>
+
+<body>
+   <button class="btn" onclick="main()">Heck me</button>
+<div></div>
+    <script>
+        const addItem = async (item) => {
+            await randomDelay();
+            let div = document.createElement("div");
+            div.innerHTML = item;
+            document.body.append(div);
+        }
+
+        const randomDelay = () => {
+            return new Promise((resolve, reject) => {
+                timeout = 1 + 2 * Math.random();
+                setTimeout(() => {
+                    resolve()
+                }, timeout * 1000);
+            })
+        }
+
+        async function main() {
+
+
+            let t = setInterval(() => {
+                let last = document.body.getElementsByTagName("div");
+                last = last[last.length - 1]
+                if(last.innerHTML.endsWith("...")){
+                    last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length-3)
+                }
+                else{
+               last.innerHTML = last.innerHTML + "."
+                }
+      }, 100);
+
+
+            let text = ["Initializing hecking", "Initialized Hacking now reading your data",
+                "Reading your Files",
+                "Password files Detected",
+                "Sending all passwords and personal files to server",
+                "Cleaning up"]
+
+            for (const item of text) {
+                await addItem(item)
+            }
+
+            await randomDelay()
+            clearInterval(t)
+            
+        }
+        
+    </script>
+</body>
+
+</html> 
+
+ -->

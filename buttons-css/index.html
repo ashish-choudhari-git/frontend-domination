@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations practice</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<style>
+    html, body, #main {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+
+#main{
+    height: 100% ;
+    width: 100%;
+    background-color: black;
+}
+
+#box{
+    height: 40% ;
+    width: 40%;
+    background-color: rgb(255, 0, 0);
+    /* animation-name: move; */
+    animation-duration: 2s;
+    position: absolute;
+    animation-iteration-count:10 ;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes move{
+    from{
+        left:0;
+        top:0;
+        rotate: 0;
+    }
+    to{
+        left:100%;
+        top:100%;
+        rotate: 360deg;
+    }
+}
+
+
+/* after and before */
+
+#box::before{
+    content: 'hellow';
+}
+
+#box::after{
+    content: 'world';
+}
+
+/* button */
+
+button{
+    height: 60px;
+    width: 140px;
+    margin: 20rem;
+    color: cyan;
+    background-color: transparent;
+    border: 2px solid cyan;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover{
+    color: black;
+    z-index: 20;
+}
+
+button::before{
+    content: "";
+    height : 60px;
+    width: 0px;
+    background-color: cyan;
+    position: absolute;
+    top:0;
+    left:0;
+    transition: all linear 0.3s;
+    z-index: -1;
+}
+
+button:hover::before{
+    width: 139px;
+}
+
+#second{
+    height: 60px;
+    width: 140px;
+    margin: 5rem;
+    color: cyan;
+    background-color: transparent;
+    border: 2px solid cyan;
+    position: relative;
+    overflow: hidden;
+}
+
+#second:hover{
+    color: black;
+    z-index: 20;
+}
+
+#second::before{
+    content: "";
+    height : 60px;
+    width: 60px;
+    background-color: cyan;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    border-radius: 50%;
+    transform:translate(-50%,-50%) Scale(0) ;
+    transition: all linear 0.2s;
+    z-index: -1;
+}
+
+#second:hover::before{
+    transform:translate(-50%,-50%) Scale(2.5);
+}
+
+</style>
+</head>
+<body>
+    <div id="main">
+       <!-- <div id="box"> hihihi </div> -->
+        <button>Submit</button>
+        <button id="second">Contact</button>
+    </div>
+</body>
+</html>

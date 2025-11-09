@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial';
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+#main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline: 60px;
+    padding-top: 150px;
+    gap: 70px;
+}
+
+#left {
+    height: 100%;
+    width: 48%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+}
+
+#left h1 {
+    font-size: 8vw;
+    font-weight: 300;
+}
+
+#bottom-left {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#color {
+    width: fit-content;
+    border: 1px solid black;
+    padding: 6px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#color h5 {
+    font-size: 1vw;
+}
+
+#c1 {
+    height: 30px;
+    width: 30px;
+    background-color: rgb(96, 58, 42);
+    border-radius: 50%;
+}
+
+#c2 {
+    height: 30px;
+    width: 30px;
+    background-color: rgb(135, 111, 76);
+    border-radius: 50%;
+}
+
+#content {
+    gap: 30px;
+}
+
+#content h2 {
+    font-size: 1.6vw;
+}
+
+#content p {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+#right {
+    height: 100%;
+    width: 32%;
+    position: relative;
+}
+
+#right-top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20px;
+}
+
+img {
+    height: 92.8%;
+    width: 100%;
+}
+
+#right h3 {
+    height: 150px;
+    width: 150px;
+    background-color: rgb(27, 39, 54);
+    border-radius: 50%;
+    position: absolute;
+    right: -15%;
+    top: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    font-weight: 600;
+}
+
+#right h4 {
+    position: absolute;
+    rotate: -90deg;
+    transform-origin: 0 0;
+    bottom: 5%;
+    left: -10%;
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 600px)  {
+    #main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-inline: 60px;
+        padding-top: 40px;
+        gap: 70px;
+    }
+
+    #left {
+        width: 80%;
+        justify-content: space-around;
+        padding-bottom: 90px;
+    }
+
+    #left h1 {
+        font-size: 6vw;
+    }
+
+    #bottom-left {
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #color {
+        width: fit-content;
+        border: 1px solid black;
+        padding: 6px 20px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #color h5 {
+        font-size: 3vw;
+    }
+
+    #c1 {
+        height: 20px;
+        width: 20px;
+    }
+
+    #c2 {
+        height: 20px;
+        width: 20px;
+    }
+
+    #content{
+        gap: 50px;
+        margin-top: 30px;;
+    }
+
+    #content h2 {
+        font-size: 4vw;
+    }
+
+    #content p {
+        font-size:4vw;
+    }
+
+    #right {
+        width: 82%;
+        position: relative;
+    }
+
+    #right-top {
+        height: 30px;
+        padding-inline: 10px;
+    }
+
+    #right-top h2{
+        font-size: 3vw;
+    }
+
+    #right h3 {
+        height: 100px;
+        width: 100px;
+        right: -15%;
+        top: 40%; 
+        font-size: 3vw;
+        font-weight: 500;
+    }
+
+    #right h4 {
+        bottom: 1%;
+        font-size: 4vw;
+    }
+
+}
+
+
+/*
+display flex 3 elemet jisko width 50% each hai. to wo compress kardega 33% pe. to avoid this, indiviual ko flex-shrik: 0 kardena aur parent me "overflow-x: auto"
+
+#text::-webkit-scrollbar and -webkit-scrollbar-thumb
+*/

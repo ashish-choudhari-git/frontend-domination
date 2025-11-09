@@ -1,0 +1,92 @@
+body          {
+  font-family:roboto;
+  background-color:rgb(171, 167, 85);
+}
+.abc h1{
+
+  text-decoration: red dotted line-through ; 
+ font-weight: lighter;
+ line-height:1.5;
+ letter-spacing:1.5px;                         /* 2.5 times normal */
+ text-transform: uppercase;
+}
+body .abc  h6{                            /* descendant selector */
+  font-size: 300%;
+}
+  /* adjacent sibling selector , jisme 1st elemets ke baadwala elemnt hi select honga aur wo bhi 1 hi */
+  div p+h3{
+    font-size:150%;
+  }
+    /* general sibling selector , 1st eleent kebaad sare select honge*/
+   div p ~ p{
+     color:red;
+   }
+  
+ /*attribute selector*/
+  input[type="text"]{
+  color: purple;
+  }
+  section{
+  background-color:#fff;
+  }
+  input[type="checkbox"]:checked {
+    color: green;
+  }
+
+  p:nth-of-type(2n){                     /*pseudo class, hover,active,checked,upar se har 2nd element green */
+color:green;
+}
+
+ p::selection {         /*pseudo eleement , first-letter, first-line, selection*/
+color:  green;
+background-color: grey;
+}
+ p::selection {                     /*pseudo eleement , first-letter, first-line, selection*/
+color:white;
+background-color: grey;
+}
+hr{
+  border: 2px solid black;
+}
+#abc{
+  height:300px;
+  width:300px;
+  background-color: yellow;
+  border-left:20px solid blue;
+  border:20px solid blue;
+  border-radius:50%;
+  margin-bottom:90px;
+  
+}
+#abc2{
+  height:300px;
+  width:300px;
+  background-color: green;
+  padding-bottom:10px;
+  margin-bottom: 20px;
+  
+}
+#abc4{
+  height:300px;
+  width:400px;
+  background-color: white;
+ border: 1px solid black;
+}
+#abc4 div{
+  height: 100;;
+  width:100px;
+  background-color: red;
+  border-bottom-left-radius: 50%;
+}
+
+a:active{
+  color:black;
+}                                                                                                                              
+a:link{
+  color:red;
+}                                                                                                                              
+a:visited{
+  color:white;
+}  
+                                                                                                                          
+                                            
