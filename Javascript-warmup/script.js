@@ -56,16 +56,24 @@ for (let [key, value] of Object.entries(person)) { //ye 2 array return karega, e
 
 
 
+
+
 //0 false "" undefined null NaN document.all -> falsy
 // how to check this  console.log(!!0) console.log(!!"helllo") 
+
+
+
+
+
 
 // Types of function
 
  fucntion abc(){  //fucntion statement }
 
  fucntion(){  anonymous function, used in callback, kyuki usko usi jagah execute karna hota h }
+ let add = fucntion(){  } varibale ka naam hi fun ka naam h
 
- () =>{    fat arrow function }
+ let add = () =>{    fat arrow function }
 
  a => { fat arrow function with one parameter}
 
@@ -73,7 +81,7 @@ for (let [key, value] of Object.entries(person)) { //ye 2 array return karega, e
 
  (f)(); IIFI
 
-
+// func call karte time argument rkhte aur function defined karte kaam time brackets me parameter
 
 
 function getSong(){
@@ -242,7 +250,7 @@ connectToServer()
 
 // -------------------- Deconstruction-----------
 
-// const [a,b,...rest] = [1,2,3,3,6];
+// const [a,b,...rest] = [1,2,3,3,6];  //rest ek array hoga
 // const [a,b] = [1,2,3];
 // const [a,,c] = [1,2,3];  a me 1 aur c me 3
 // const [a,b] = [1,2];
@@ -321,5 +329,106 @@ connectToServer()
 
 
 // Object.entries(objname).forEach((val)=> { console.log(val[0] + " " + val[1])});
+
+//true + false = 1 all .falsy values are 0   
+// typeof NaN === 'number' //true
+
+
+// let a = []
+// a instanceof Array //true  . instance of works only with reference values ( array , object) and not with primitive values like number,string
+// and typeof array is object
+
+
+// function show(a,b,...rest){ console.log (a,b,rest)}  show(1,2,3,4);
+
+
+
+
+
+
+
+//first class function  - function  ko values ki taraf treat kar skte aur variable me store aur function me pass kar skte
+//higher order function - jo fucntion dusra fun return ya accet kare
+//pure function - jo outer value change na kare
+//impure function - jo outer value change karta hai 
+
+
+
+
+
+//Closures
+
+//jab function koi dusra function return karta hai aur return hone wala function apne parent ke variable ka hamesha use karta hai usko closure bolte. even after outer function is returned
+
+// function createCounter() {
+//   let count = 0; // private variable
+
+//   return function () {
+//     count++;
+//     console.log(count);
+//   };
+// }
+
+// const counter = createCounter();
+// counter(); // 1
+// counter(); // 2
+
+
+
+
+
+//----Q1 . get any number of scores and return sum
+
+// function sum(...score){
+//   var sum =0;
+//   score.forEach((val)=>{  sum += val});
+//   return sum;
+// }
+
+// console.log(sum(1,2,3,4,4));
+
+
+
+// ----- Q2 . make a reusable calculator for discount
+
+// function discount(discount){
+//     return function(price){
+//       return price - price * ( discount/100);
+//     }
+// }
+
+
+// const ten = discount(10);
+// const twenty = discount(20);
+
+// console.log(ten(200));
+// console.log(ten(200));
+// console.log(twenty(200));
+
+
+
+
+
+// Q3. make counter program 
+
+// function counter(){
+//   let  count =0;
+//   return function(){
+//     return ++count;
+//   }
+// }
+
+
+// const c = counter();
+// console.log(c());
+// console.log(c());
+
+// const d = counter();
+// console.log(d());
+
+
+
+
+
 
 
