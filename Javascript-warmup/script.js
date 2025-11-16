@@ -429,6 +429,88 @@ connectToServer()
 
 
 
+// Explicity conversion
+// console.log(Number("3"));
+
+//jab failed number operation (jab number pe operation hota aur wo glt aata) tab NaN print hota
+// console.log(2*#);
+
+
+//------------------Instance of 
+// let a  = []
+// let b = {}
+// let c = 34
+
+// console.log(a instanceof Array) //true
+// console.log(b instanceof Object) //true
+// console.log(c instanceof Number) //false - instance of works only on reference value
 
 
 
+
+//----------Hoisiting
+// it is behaviour of js  of movin varibales and function declaration to top 
+
+// only declration is hoisted , not initialization
+// fucntion declartionn - can be called before declaration        abcd() function abcd(){ -- }
+// function expressions are NOT hoisted      let ans = function(){ --}
+
+
+
+
+
+
+
+
+//IIFE are used for private variable
+
+// let ash = (function(){
+//   let balance = 0;  // we cant acces balance varibale directly
+//   return {
+//     getBalance : function(){
+//       return balance;
+//     },
+//     setBalance: function(val){
+//       balance =val;
+//     },
+//   }
+// })();
+
+// console.log(ash.getBalance());
+
+
+
+
+
+
+//------------------------------------ARRAYS
+// let arr = [23,88,3,6,8,2];
+
+// console.log(arr);
+// console.log(arr.reverse());
+// console.log(arr.push(111));  //return me new arr size aata
+// console.log(arr.unshift(222)); //same size return hoga hai after adding
+// console.log(arr.pop());  //jo value nikli wo return hoga
+// console.log(arr.shift());  //same
+// console.log(arr.sort());
+// console.log(arr.slice(0,2));   //0th 1st ye 2 element return ho jayege, wihtout changing original array
+// console.log(arr.splice(0,1)); //0th pos pe jake 1 elem hata do . uar jo element hata hai wo return ho jayega
+// console.log(arr.splice(0,1,333)); //0th pos pe jake 1 elem hata do ,aur 333 ko add karo
+// console.log(arr);
+
+
+// arr.sort(function(a,b){
+//   return b-a;   // sort in decending, b-a kiya to asc
+// })
+
+// console.log(arr);
+
+//reduce
+
+// let ans = arr.reduce(function(acc,val){
+//   return acc + val;
+// })
+
+//initals value apne man se dalna hai to ) pahle ,3 dal skte
+
+// console.log(ans);
