@@ -503,6 +503,8 @@ connectToServer()
 //   return b-a;   // sort in decending, b-a kiya to asc
 // })
 
+//descending ke liye arr.sort().reverse() 
+
 // console.log(arr);
 
 //reduce
@@ -514,3 +516,131 @@ connectToServer()
 //initals value apne man se dalna hai to ) pahle ,3 dal skte
 
 // console.log(ans);
+
+
+// let a = arr.find( function(val){
+//   return val === 8;
+//   return val > 8; //first wala >8 number return
+// })    // agar Arr me 8 hoga to variabe me first wala 8 ayega, otherwise undefined
+
+// console.log(a);
+
+// let a = arr.some( function(val){
+//   return val >;
+// })    // true return karega agar 1 bhi 8 se bada hua else false
+
+// console.log(a);
+
+// let a = arr.every( function(val){
+//   return val >= 1;
+// })    //true if sab 1 se bade hoge
+
+// console.log(a); 
+
+
+// let newarr = arr; // ye reference store karega
+// let newArr  = [...arr] // ye values store kareega without reference  //copy
+
+
+
+
+
+//----------------- Q1. add "banana","apple" at index 1
+// let fruits = ["kela","seb"];
+// fruits.splice(1,0,"banana","apple");
+// console.log(fruits);
+
+
+
+
+
+//------------------------------------OBJECTS
+
+let prop = "gender";
+
+let obj ={
+  "name": "ashish",
+  age : 19,
+  greet : function(){ console.log("hellow")},
+  add : { 
+    city : "nagpur",
+    state : "maharashtra"
+  },
+  [prop] : "male"
+}
+
+// console.log(obj);
+
+// obj.name vs obj["name"]
+// let aa ="name";
+// obj.aa likha to aa ki jagah name nahi ayega, . ke baad jo likha hoga wahi seach hoga
+// agar value cahhiye to obj[aa] use karna wo obj["name"] ban jayega . aa ki vlaue change kar skte tab use karna
+
+// obj.name ke jagah obj?.name , error nhi ayega if value nahi hai to
+
+
+// let {city, state} = obj.add; // ab acccess karne ke liye bar bar lamba likhna nahi h
+// console.log(city);
+
+
+// let newObj = {...obj}; 
+// let newObj = Object.assign({}, obj); 
+//Yahaan spread operator aru assign sirf ek level tak copy karta hai. name → primitive → real copy. add → non-primitive (object) → reference copy
+//stringify, structuredClone
+
+
+
+
+// DOCUMENT OBJECT MODEL
+
+// document.body.style.background = "red";
+
+let body = document.body;
+
+body.style.background = "black";
+body.style.color = "white";
+
+
+// document.getElementById
+// document.getElementsByClassName
+// document.getElementsByName
+// document.getElementsByTagName
+// document.querySelectorAll
+// document.querySelector
+
+
+// let abcd = document.getElementById("title"); 
+// abcd.style.color = "red";
+
+// body.querySelector("h1").style.color = "red"; //sirf first waal hi select hoga
+// document.body.querySelectorAll("h1")[0].style.color = "red"; 
+// let abcd = document.body.querySelectorAll("h1");  //nodelist return karta hai, array jeisa nahi hai, forof loop chala skte
+// abcd[1].style.color = "red"; 
+
+
+// for(const a of abcd){
+//   a.style.color = "red"; 
+// }
+
+// abcd.forEach((e)=>{
+//   e.style.color = "red"; 
+// })
+
+// console.dir(element)
+let h1 = body.querySelector("h1");
+h1.innerHTML = "<i>red</>";  
+//same textContent, innerText bas text badlta
+//outerHTML tag ko bhi select karlega text ke saath
+
+// h1.hidden = true;
+
+
+
+
+// ------ Attribute manipulation
+
+//setAttribute, getAttribute, hasAttribute, 
+// body.querySelector("a").href = "https://www.google.com";
+
+body.querySelector("a").setAttribute("href", "url");
+
