@@ -556,18 +556,18 @@ connectToServer()
 
 //------------------------------------OBJECTS
 
-let prop = "gender";
+// let prop = "gender";
 
-let obj ={
-  "name": "ashish",
-  age : 19,
-  greet : function(){ console.log("hellow")},
-  add : { 
-    city : "nagpur",
-    state : "maharashtra"
-  },
-  [prop] : "male"
-}
+// let obj ={
+//   "name": "ashish",
+//   age : 19,
+//   greet : function(){ console.log("hellow")},
+//   add : { 
+//     city : "nagpur",
+//     state : "maharashtra"
+//   },
+//   [prop] : "male"
+// }
 
 // console.log(obj);
 
@@ -595,18 +595,19 @@ let obj ={
 
 // document.body.style.background = "red";
 
-let body = document.body;
+// let body = document.body;
 
-body.style.background = "black";
-body.style.color = "white";
+// body.style.background = "black";
+// body.style.color = "white";
 
 
-// document.getElementById
-// document.getElementsByClassName
+// document.getElementById   //document ke baad body mat dalna
+// document.querySelector("#idkaname")   
+// document.getElementsByClassName  //return HTML collections
 // document.getElementsByName
 // document.getElementsByTagName
-// document.querySelectorAll
-// document.querySelector
+// document.querySelectorAll    //return nodeList   //iterate with forEach
+// document.querySelector  //universal, sab select kar skta
 
 
 // let abcd = document.getElementById("title"); 
@@ -627,8 +628,8 @@ body.style.color = "white";
 // })
 
 // console.dir(element)
-let h1 = body.querySelector("h1");
-h1.innerHTML = "<i>red</>";  
+// let h1 = body.querySelector("h1");
+// h1.innerHTML = "<i>red</>";  
 //same textContent, innerText bas text badlta
 //outerHTML tag ko bhi select karlega text ke saath
 
@@ -640,7 +641,166 @@ h1.innerHTML = "<i>red</>";
 // ------ Attribute manipulation
 
 //setAttribute, getAttribute, hasAttribute, 
+
+
 // body.querySelector("a").href = "https://www.google.com";
 
-body.querySelector("a").setAttribute("href", "url");
+
+//1
+// body.querySelector("a").setAttribute("href", "url");  //src
+
+
+//2
+// let ab = body.querySelector("a").getAttribute("href");
+// console.log(ab);
+
+
+//3
+// console.log(body.querySelector("a").hasAttribute("href"));   //True ro false
+
+
+//4
+// console.log(body.querySelector("a").removeAttribute("href"));
+
+
+
+
+//-------remove any element
+// let h1 = document.body.querySelector("h1");
+// h1.remove();
+
+
+
+
+
+
+
+//--------Dynamic dom manipulation
+
+// let ab = document.createElement("h1");
+// ab.textContent = "hi ashii";
+// body.prepend(ab);
+// body.append(ab);
+// body.appendChild(ab);
+// body.removeChild(ab);
+
+
+
+
+//------ classList 
+// let ab = document.getElementById("title");
+// ab.classList.add("blue");
+// ab.classList.remove("blue");
+// ab.classList.toggle("blue");
+
+// console.log(ab.classList);  // array index classList[0] classList[1]
+// console.log(ab.classList.contains("random"));
+// console.log(ab.classList.value);  //string me dega puri classes
+// console.log(ab.classList.length);
+
+
+
+// let cd = document.querySelectorAll (".list");    //returned nodeList
+
+// cd.forEach(function(val){
+//   console.log(val.textContent);             //for loop se bhi kar skte
+// })
+
+
+// textContent(faster) > innerText (hidden wale ko nahi nikalta)
+
+
+// img.src = 'xyz'; OR
+// img.setAttribute("src","xyz")
+
+
+
+//kisi element ko hover karne pe , uka title wala content dikhne lagta
+
+
+  
+// Q. remove first element from list
+// let ul = document.getElementsByTagName("ul");
+// let li = document.getElementsByName("li");
+// ul.removeChild(li);
+
+
+// --- Q2. select every 2nd elemetn
+// let ed = document.querySelectorAll("ul li:nth-child(2n)");
+// ed.forEach((val)=>{val.classList.add("highlight")});
+
+
+
+
+
+
+
+
+
+
+
+//-----------------EVENT LISTENER & handeling
+
+//browser me koi bhi harkat hue to event raise ho jayega
+
+//select target elem
+//think what should to be happened
+//write what you want
+
+// let sel = document.querySelector("h1");
+
+// function changeColor(){
+//       sel.style.color = "red";
+// }
+
+//adding 
+
+// sel.addEventListener("dblclick", changeColor);
+// sel.addEventListener("click", changeColor);
+
+//removing
+
+// sel.removeEventListener("click", changeColor);
+
+
+// let sel = document.querySelector("input");
+
+// sel.addEventListener("input", (e)=>{
+//   console.log(e.data);
+//   console.log(e.target.value);
+// })
+
+
+
+
+
+
+// let sel = document.querySelector("select");
+
+// sel.addEventListener("change" ,(e)=>{
+//   body.querySelector("h1").textContent = `Device Selected : ${e.target.value}`    //jo value attribute me likha hoga wo milega
+// })
+
+
+
+
+// let sel = document.querySelector("h1");
+
+// document.addEventListener("keydown" ,(e)=>{
+//   if(e.key === " "){
+//     sel.textContent = "space";
+//   }else{
+//     sel.textContent = e.key;
+//   }
+// });
+
+
+
+
+//custom upload file
+
+
+
+
+
 
