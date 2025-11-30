@@ -1,8 +1,8 @@
- /* .blue {
+/* .blue {
     color: blue;
-} */
+} 
 
-/* user-select : none */
+ user-select : none ; */
 
 *{
     margin: 0;
@@ -13,6 +13,7 @@
 html,body{
     height: 100%;
     width: 100%;
+        background-color: black;
 }
 
 
@@ -23,16 +24,31 @@ html,body{
 } */
 
 #main {
-    height: 100%;
-    width: 100%;
     display: flex;
+    margin-top: 100px;
     align-items: center;
     justify-content: center;
 }
 
-#btn{
+/* #fileinp{
+    display: none;
+} */
+/* 
+.btn {
     height: 100px;
-    width: 100px;
-    background-color: "green";
-    padding: 32px 82px;
+    width: 300px;
+    background-color:rgb(79, 197, 79);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 1rem;
+}  */
+
+.card{
+    padding: 20px;
+    border: 2px solid white;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 10px;
 }

@@ -783,7 +783,7 @@ connectToServer()
 
 
 
-
+  
 // let sel = document.querySelector("h1");
 
 // document.addEventListener("keydown" ,(e)=>{
@@ -798,6 +798,41 @@ connectToServer()
 
 
 //custom upload file
+// let fileinp = document.getElementById("fileinp");
+// let sel = document.querySelector(".btn");
+
+// sel.addEventListener("click" ,()=>{
+//   fileinp.click();
+// });
+
+// fileinp.addEventListener("change", (e)=>{
+//   // sel.textContent = e.target?.files[0].name;  // e.target.value pe file ka path milega
+
+//   let file = e.target?.files[0];
+//   if(file){
+//      sel.textContent = file.name;  //if file is not there then it will be undefined
+//   }
+// })
+
+
+
+
+//------FORM SUBMIT
+
+let form = document.querySelector("form");
+let input = document.querySelectorAll("input");
+
+form.addEventListener("submit", function(dets){
+  dets.preventDefault();
+  // console.log(input[0].value, input[1].value); 
+  
+})
+
+
+
+
+
+
 
 
 
