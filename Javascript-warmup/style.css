@@ -23,12 +23,13 @@ html,body{
     font-weight: 200;
 } */
 
+/* 
 #main {
     display: flex;
     margin-top: 100px;
     align-items: center;
     justify-content: center;
-}
+} */
 
 /* #fileinp{
     display: none;
@@ -45,10 +46,56 @@ html,body{
     font-size: 1rem;
 }  */
 
-.card{
+/* .card{
     padding: 20px;
     border: 2px solid white;
     margin-top: 20px;
+    height: auto;
+    width: auto;
+    color: white;
     display: inline-block;
     border-radius: 10px;
+    margin-inline: 10px;
+} */
+
+
+/* iske parent ko pos relative dena aur overflwo hidden */
+/* #abcd{
+    height: 400px;
+    width: 400px;
+    background-color: red;
+    position: absolute;  
+    transition: all cubic-bezier(0.19,1, 0.22, 1)0.61s;
+    color : white;
+} */
+
+
+
+/* event bubbling */
+/* .lt{
+    text-decoration: line-through;
 }
+
+ul{
+    color: white;
+    padding: 100px;
+} */
+
+/* Event capturing */
+/* 
+.a{
+    background-color: red;
+    height: 50%;
+    width: 50%;
+}
+.b{
+    background-color: blue;
+    height: 50%;
+    width: 50%;
+}
+.c{
+    background-color: rgb(126, 126, 79);
+    height: 70%;
+    width: 70%;
+} */
+

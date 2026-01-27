@@ -7,7 +7,7 @@
 // 2. Reference data type - [],{},()- It is not copied directly it just creates a reference (To copy we can use spread operator)
 
 
-var a= 10; var b=a;
+var a= 10; var b=a;  //b ko chnage karne pe a change nahi hoga
 var a = [1,2,3]; 
 var b= a;
 // As this is refernce datatype it will create reference to do real copy we use spread operator
@@ -20,22 +20,17 @@ arr.forEach(function(values, index){ //index is optional
 }) 
     
 
-//iterating keys of an object, array, or string.
+// iterating keys of an object, array, or string.
+
 var obj ={ name: "ashish", age:21};
 var arr =[3,4,5];
 let str = "ash"; //string me ek ek character print hoga
 
 for(let val in str){
-    console.log(val, str[val]);
+    console.log(val, str[val]);  val me 0 to 2 and str[val] me a s h
 }
 
 //iterating values of an iterable (arrays, strings, maps, sets). not with object 
-let str = "ash";
-
-for(let val of str){
-    console.log(val);
-}
-
 //Explicitly kar skte object pe iterate
 let person = { name: "ash", age: 21 };
 
@@ -59,7 +54,7 @@ for (let [key, value] of Object.entries(person)) { //ye 2 array return karega, e
 
 
 //0 false "" undefined null NaN document.all -> falsy
-// how to check this  console.log(!!0) console.log(!!"helllo") 
+// how to check this  console.log(!!0) console.log(!!"helllo") .
 
 
 
@@ -168,12 +163,15 @@ connectToServer()
 //creation of object 
 
 //1.  object literal
-// const person ={ "name" : "ashi", age : 18, greet : function(){c.l(1)}};
-// console.log(person.name);
+// const person ={ "name" : "ashi", age : 18, greet : function(){
+//   console.log(person.name);
+// }};
+
+// console.log(person.greet());
 // console.log(person["name"]);
 
 //2. 
-// const proto = { greet() { return "hi"; } };
+// const proto = { greet() { return "hi"; } };   // , je baad function bhi likh skte
 // { greet: [Function: greet] }
 // console.log(proto.greet());
 
@@ -252,6 +250,7 @@ connectToServer()
 
 // const [a,b,...rest] = [1,2,3,3,6];  //rest ek array hoga
 // const [a,b] = [1,2,3];
+// console.log(b);
 // const [a,,c] = [1,2,3];  a me 1 aur c me 3
 // const [a,b] = [1,2];
 // console.log(rest);
@@ -275,11 +274,12 @@ connectToServer()
 
 //-----Sets
 
-// let num = new Set([1,2,2,3]);
+let num = new Set([1,2,2,3]);    // only unique elem
 // console.log(num);
 
 // num.add(4);
 // num.add([4,5]);
+// num.add("ashish");
 // console.log(num);
 
 // console.log(num.size);
@@ -293,7 +293,7 @@ connectToServer()
 
 // num.forEach((val)=> { console.log(val);});
 
-
+//add delete has clear size
 
 
 
@@ -319,6 +319,7 @@ connectToServer()
 //   console.log(`${key} : ${val}`);
 // }
 
+//get set delete has
 
 
 //NULLISH
@@ -441,7 +442,7 @@ connectToServer()
 // let b = {}
 // let c = 34
 
-// console.log(a instanceof Array) //true
+// console.log(a instanceof Array); //true  //should not be array
 // console.log(b instanceof Object) //true
 // console.log(c instanceof Number) //false - instance of works only on reference value
 
@@ -495,23 +496,31 @@ connectToServer()
 // console.log(arr.sort());
 // console.log(arr.slice(0,2));   //0th 1st ye 2 element return ho jayege, wihtout changing original array
 // console.log(arr.splice(0,1)); //0th pos pe jake 1 elem hata do . uar jo element hata hai wo return ho jayega
-// console.log(arr.splice(0,1,333)); //0th pos pe jake 1 elem hata do ,aur 333 ko add karo
+// console.log(arr.splice(0,1,333,44)); //0th pos pe jake 1 elem hata do ,aur 333,44 ko add karo
 // console.log(arr);
 
 
 // arr.sort(function(a,b){
-//   return b-a;   // sort in decending, b-a kiya to asc
+//   return b-a;   // sort in decending, a-b kiya to asc
+//   // return a-b;
 // })
 
-//descending ke liye arr.sort().reverse() 
+// arr.sort().reverse(); 
 
+//descending ke liye arr.sort().reverse()  yes, kaam karta hai
 // console.log(arr);
 
 //reduce
 
-// let ans = arr.reduce(function(acc,val){
+
+// let red = [1,2];
+
+// .reduce( accumulator, currentvalue, currentindex, array)  array contain inital vlaue for accumulator
+
+// let ans = red.reduce(function(acc,val){
 //   return acc + val;
-// })
+// });
+// },3) only 1 values
 
 //initals value apne man se dalna hai to ) pahle ,3 dal skte
 
@@ -519,14 +528,14 @@ connectToServer()
 
 
 // let a = arr.find( function(val){
-//   return val === 8;
+//   // return val === 8;
 //   return val > 8; //first wala >8 number return
 // })    // agar Arr me 8 hoga to variabe me first wala 8 ayega, otherwise undefined
 
 // console.log(a);
 
 // let a = arr.some( function(val){
-//   return val >;
+//   return val >8;
 // })    // true return karega agar 1 bhi 8 se bada hua else false
 
 // console.log(a);
@@ -542,6 +551,7 @@ connectToServer()
 // let newArr  = [...arr] // ye values store kareega without reference  //copy
 
 
+// reduce find some every map filter 
 
 
 
@@ -574,7 +584,7 @@ connectToServer()
 // obj.name vs obj["name"]
 // let aa ="name";
 // obj.aa likha to aa ki jagah name nahi ayega, . ke baad jo likha hoga wahi seach hoga
-// agar value cahhiye to obj[aa] use karna wo obj["name"] ban jayega . aa ki vlaue change kar skte tab use karna
+// agar value cahhiye to obj["aa"] use karna wo obj["name"] ban jayega . aa ki vlaue change kar skte tab use karna
 
 // obj.name ke jagah obj?.name , error nhi ayega if value nahi hai to
 
@@ -586,7 +596,7 @@ connectToServer()
 // let newObj = {...obj}; 
 // let newObj = Object.assign({}, obj); 
 //Yahaan spread operator aru assign sirf ek level tak copy karta hai. name → primitive → real copy. add → non-primitive (object) → reference copy
-//stringify, structuredClone
+//stringify*, structuredClone**
 
 
 
@@ -606,7 +616,7 @@ connectToServer()
 // document.getElementsByClassName  //return HTML collections
 // document.getElementsByName
 // document.getElementsByTagName
-// document.querySelectorAll    //return nodeList   //iterate with forEach
+// document.querySelectorAll    //return nodeList   //iterate with forEach forof loop
 // document.querySelector  //universal, sab select kar skta
 
 
@@ -640,7 +650,7 @@ connectToServer()
 
 // ------ Attribute manipulation
 
-//setAttribute, getAttribute, hasAttribute, 
+//setAttribute, getAttribute, hasAttribute, removeAttribute
 
 
 // body.querySelector("a").href = "https://www.google.com";
@@ -659,7 +669,7 @@ connectToServer()
 // console.log(body.querySelector("a").hasAttribute("href"));   //True ro false
 
 
-//4
+//4   
 // console.log(body.querySelector("a").removeAttribute("href"));
 
 
@@ -698,9 +708,10 @@ connectToServer()
 // console.log(ab.classList.value);  //string me dega puri classes
 // console.log(ab.classList.length);
 
+//6
 
 
-// let cd = document.querySelectorAll (".list");    //returned nodeList
+// let cd = document.querySelectorAll(".list");    //returned nodeList
 
 // cd.forEach(function(val){
 //   console.log(val.textContent);             //for loop se bhi kar skte
@@ -819,14 +830,57 @@ connectToServer()
 
 //------FORM SUBMIT
 
-let form = document.querySelector("form");
-let input = document.querySelectorAll("input");
+// let form = document.querySelector("form");
+// let input = document.querySelectorAll("input");
+// let cards = document.querySelector(".cards");
 
-form.addEventListener("submit", function(dets){
-  dets.preventDefault();
-  // console.log(input[0].value, input[1].value); 
-  
-})
+// form.addEventListener("submit", function(dets){
+//   dets.preventDefault();
+//   // console.log(input[0].value, input[1].value);
+//   let crd = document.createElement("div");
+
+//   crd.classList.add("card");
+//   let fname = input[0].value;
+//   let age = input[1].value;
+
+//   crd.innerHTML =`<h3 class="name">${fname}</h3>
+//         <h3 class="number">${age}</h3>`;
+
+//   cards.appendChild(crd);
+// })
+
+
+//---------/out/Mouseover/move  (bubble)       mouseenter/mouseleave
+let ab = document.querySelector("#abcd");
+
+// ab.addEventListener("mouseover", function(){
+//   ab.style.backgroundColor = "green";
+// });
+
+// ab.addEventListener("mouseout", function(){
+//   ab.style.backgroundColor = "yellow";
+// });
+
+
+// dets ye ek event object hai , target bhi event object hota
+
+// window.addEventListener("mousemove", function(det){
+//   // console.log(det);
+//   // console.log(det.clientX);
+//   // document.getElementById("abcd").innerHTML =` X = ${det.clientX} and Y = ${det.clientY} `;
+//   // ab.style.top = det.clientY + "px";
+//   // ab.style.left= det.clientX + "px";
+// });
+
+
+// EVENT OBEJCTS
+// event.target
+// event.type  -> it return click, submit , change, keyup down, mouse over out move, dblclick,
+// event.preventDefault();   used in form, after submit page doent reload, form pe event listener lagana and prevent default
+
+// form.addEventListener("submit", function(dets){
+//   dets.preventDefault();
+// });
 
 
 
@@ -836,6 +890,92 @@ form.addEventListener("submit", function(dets){
 
 
 
+// --------------------EVENT BUBBLING
+ 
+// Bubbling means: when an event happens on a child element, it also “bubbles up” and triggers the same event on its parent, then grandparent… up to document.  targeted elem se pure doc tak jayega propagation for sure
+
+// ex1
+// parent = document.querySelector("#parent");
+// child = document.querySelector("#child");
+// parent.addEventListener("click", () => console.log("parent mouseover"));
+// child.addEventListener("mouseover", () => console.log("child mouseover"));
 
 
+// ex2
+// ul = document.querySelector("ul");
+// ul.addEventListener("click", (dets)=>{
+//   dets.target.classList.toggle("lt");
+// });
+//event start li se hota hai(click event) aur bubble hoke ul tak pahochta hai aur uska bhi event execut ekar deta
+//solution is , to stop propagation
+
+// li = document.querySelector("li");
+// li.addEventListener("click", (e)=>{
+//   e.stopPropagation();
+// });
+
+
+
+
+
+//--------------Event capturing
+
+// a = document.querySelector(".a");
+// b = document.querySelector(".b");
+// c = document.querySelector(".c");
+// button = document.querySelector("button");
+
+// a.addEventListener("click", ()=>{
+//   console.log("a clicked");
+// }, true);
+
+// c.addEventListener("click", ()=>{
+//   console.log("c clicked");
+// });
+
+// button.addEventListener("click", (e)=>{
+//   console.log("button clicked");
+//   // e.stopPropagation();
+// });
+
+//agar button pe clck kiye to button - > C -> A, event bubbling hora
+
+
+// jab bhi aap click krte ho YA koi bhi event raise krte ho-> to aapka jo EVENT FLOW do phases mein chalta hai:
+// phase 1: event top level element se neeche ki taraf aayega
+// phase 2: event raised element se parent ki taraf jaayega
+// aur pahle phase 1 hoti hati h, pa rwo by default band rhti h,
+// if usko on kiya to phase 1 ka result milega then phase 2, both.
+//  jo chize pahse 1 me execute ho gai wo phase 2 nai hogi
+//capture phase on karle ke liey listener ke last curcly braces ke aage , true likhdo
+// ex : objectname.addEventListener("",()=>{}, true);
+
+
+
+//event jaha bhi occur kiya, pattern upar se niche ki taraf ayega
+
+
+
+
+
+
+
+
+
+//-------EXercise : Live charcter counter
+let inp = document.querySelector("input");
+val = document.querySelector("#val");
+inp.addEventListener("input", (dets)=>{
+  // console.log(dets.target.value.length);
+
+  let left = 20 - dets.target.value.length;
+  val.textContent = left;
+
+  if(left < 0){
+    val.style.color = "red";
+  }else{
+    val.style.color = "white";
+  }
+
+});
 
