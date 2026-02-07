@@ -99,3 +99,78 @@ ul{
     width: 70%;
 } */
 
+
+
+
+/* timers and interval , download progress bar */
+/* 
+.downloadBox{
+    height: 100px;
+    background-color: rgb(147, 239, 227);
+    width: 300px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.progressBar{
+    height: 100%;
+    width: 0%;
+    background-color: white;
+}
+
+.outer{
+    height: 20px;
+    width: 80%;
+    background-color: rgb(119, 113, 113);
+} */
+
+
+
+
+
+
+
+/* real time search */
+
+.container{
+    height: 500px;
+    width: auto;
+    background-color: rgb(52, 56, 60);
+    margin-inline: auto;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+input{
+    height: 40px;
+    width: 300px;
+    font-size: 20px;
+    margin-bottom: 60px;
+    border-radius: 8px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.card{
+    background-color: white;
+    height: 250px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

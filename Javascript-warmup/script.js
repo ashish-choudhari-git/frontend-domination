@@ -617,6 +617,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // document.getElementsByName
 // document.getElementsByTagName
 // document.querySelectorAll    //return nodeList   //iterate with forEach forof loop
+
 // document.querySelector  //universal, sab select kar skta
 
 
@@ -868,6 +869,7 @@ let ab = document.querySelector("#abcd");
 //   // console.log(det);
 //   // console.log(det.clientX);
 //   // document.getElementById("abcd").innerHTML =` X = ${det.clientX} and Y = ${det.clientY} `;
+
 //   // ab.style.top = det.clientY + "px";
 //   // ab.style.left= det.clientX + "px";
 // });
@@ -963,19 +965,349 @@ let ab = document.querySelector("#abcd");
 
 
 //-------EXercise : Live charcter counter
-let inp = document.querySelector("input");
-val = document.querySelector("#val");
-inp.addEventListener("input", (dets)=>{
-  // console.log(dets.target.value.length);
+// let inp = document.querySelector("input");
+// val = document.querySelector("#val");
+// inp.addEventListener("input", (dets)=>{
+//   // console.log(dets.target.value.length);
 
-  let left = 20 - dets.target.value.length;
-  val.textContent = left;
+//   let left = 20 - dets.target.value.length;
+//   val.textContent = left;
 
-  if(left < 0){
-    val.style.color = "red";
-  }else{
-    val.style.color = "white";
-  }
+//   if(left < 0){
+//     val.style.color = "red";
+//   }else{
+//     val.style.color = "white";
+//   }
 
-});
+// });
+
+
+
+
+//---------------------FROM VALIDATIONS
+
+//input reading
+//form submit prevent deafult
+//field level validation
+//inline vlaidation
+//regrex email vlaidation regex.test(inp[0].value)
+//suggestion off autocomplete ="off"
+ 
+
+// let form = document.querySelector("form");
+// let inp = document.querySelectorAll("input");
+
+// form.addEventListener("submit", (e)=>{
+//   e.preventDefault(); //isse refresh pe value gayab nai hoti, aur form submit nahi hota, jab tak js chal na jaye
+
+//   //name pe validation
+
+//   if(inp[0].value.length < 3){
+//     alert("name should be greater then 3 char");
+//   }
+  
+//   //name input ko id deke bhi directly access kar skte the
+//   //inline validation : input tag me "required", "minlength", "maxlength"
+//   //inline validation is not reliable
+
+
+//   //email validation
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   // console.log(emailRegex.test("aaa@g.com"));   //true or false
+
+//   if(emailRegex.test(inp[1].value)){
+//     console.log("email is correct");
+
+//   }else{
+//     console.log("email should be in corretct formate");
+//     // document.querySelector("#emailerror").textContent ="email is incorrect";
+//     //document.querySelector("#emailerror").style.display = "inital";
+//   }
+
+//   //form me suggestions nai chahiye to html me form tag me , autocomplete="off"
+//   //password me bhi regex lagake , password validation karna
+//   //error dkhana hai to classs banan, display =none , style.display  "initial"
+
+//   inp.forEach((d)=>{
+//     console.log(d.value);
+//   });
+// })
+
+
+
+
+
+//-------------------------TIMER AND INTERVAL
+
+//its like abhi se 10 second baad kuchh karo
+
+
+
+
+// setTimeout(function, time)
+// setTimeout(()=>{
+//   console.log("ashish");
+// }, 2000);
+
+// let tm = setTimeout(()=>{
+//   console.log("ashish");
+// }, 2000);
+
+// clearTimeout(tm);
+
+
+
+
+// setInterval(()=>{
+//   console.log("ashish");
+// }, 2000);
+
+// clearInterval(tm);
+
+
+
+// EX: make a counter
+
+// let count = 10 ;
+// let interval = setInterval(()=>{
+//   console.log(count--);
+//   if(count <0){
+//     clearInterval(interval);
+//   }
+// },1000);
+
+
+// Ex2 : make download progress Bar
+
+// let progressBar = document.querySelector(".progressBar");
+// let count = 0;
+// let seconds = 2;
+
+// let int = setInterval(()=>{
+//   if(count <=99){
+//     count++;
+//     progressBar.style.width = `${count}%`;
+//   }else{
+//   document.querySelector(".downloadText").textContent = "Downloaded";
+//  clearInterval(int);
+//   }
+// }, seconds * 1000/100);
+
+
+
+
+
+
+
+
+//-----------------------------Dates and time
+// In JavaScript, all date & time stuff revolves around one built-in object:
+//Date is object
+// const now = new Date();
+// console.log(now); // Day month  date time(H:M:S) GMS+0530 (ISD)
+
+// console.log(Date.now()); // milliseconds since 1970 //1706781234567
+
+// | Method              | Meaning                    |
+// | ------------------- | -------------------------- |
+// | `getFullYear()`     | 2026                       |
+// | `getMonth()`        | 0–11                       |
+// | `getDate()`         | Day of month (1–31)        |
+// | `getDay()`          | Day of week (0–6, Sun = 0) |
+// | `getHours()`        | 0–23                       |
+// | `getMinutes()`      | 0–59                       |
+// | `getSeconds()`      | 0–59                       |
+
+// console.log(now.getMonth());
+
+
+
+
+
+
+//--------------------LocalStorage, Session Storage , Cookies
+
+// localStorage-> browser me data store karna ~5MB 
+// sessionStorage -> data temporarily store karta hai
+// cookier -> store data in less amount    ~4kb
+
+
+
+
+//setItem, getItem, removeItem , clear
+// localStorage.setItem("name", "ashish");
+// console.log(localStorage.getItem("name"));
+// localStorage.removeItem("name");
+// localStorage.clear();
+
+//updating
+// localStorage.setItem("Name", "surwa");
+
+//localstorage onyl stores string (does not store array or object)
+
+//for storing object 
+// localStorage.setItem("name", JSON.stringify([1,2,3]));
+// console.log(JSON.parse(localStorage.getItem("name")));
+
+
+
+
+//same properties used with session storage, tab udaya to session bhi gayab
+// sessionStorage.setItem("name", "ashish");
+// console.log(sessionStorage.getItem("name"));
+
+
+
+
+
+//cookie kam data store karta and server pe automatically send ho jata
+// document.cookie = "name=jj";
+
+
+
+// EX.2 operating system ke dark ya light mode detect karek website ka theme change karo. localStorage > windows 
+
+
+// function applyTheme(theme){
+//   document.body.classList.remove("dark", "light");
+//   document.body.classList.add(theme);
+// }
+
+// function getSystemTheme(){
+//   return window.matchMedia('(prefers-color-scheme:dark)').matches ? "dark" : "light";
+// }
+
+
+// function setInitialtheme(){
+//   const saved = localStorage.getItem("theme");
+//   applyTheme(saved || getSystemTheme());
+// }
+
+// setInitialtheme();
+
+// //windows ki theme change hui to
+
+// window.matchMedia('(prefers-color-scheme:dark)').addEventListener("change", ()=>{
+//   if(!localStorage.getItem("theme")){
+//     applyTheme(getSystemTheme());
+//   }
+// });
+
+
+// //toggle button se theme change
+
+// document.querySelector("#button").addEventListener("click", ()=>{
+//   let curretTheme = document.body.classList.contains("dark") ? "dark" : "light";
+//   let newTheme = currentTheme === "dark" ? "light" : "dark";
+
+//   applyTheme(newTheme);
+//   localStorage.setItem("theme", newTheme);
+// });
+
+
+
+
+
+
+//----------------------Practice small project 
+//real time search
+// const users = [
+//   { name: "Ashish chanchlani",
+//     bio: "I am full stack web developer from nagpur"
+//   },
+//   { 
+//     name: "apurwa nagpurkar", 
+//     bio: "Frontend developer who loves React and UI design" 
+//   },
+//   { 
+//     name: "sneha waghjive", 
+//     bio: "Backend engineer specializing in Node.js and databases" 
+//   },
+//   { 
+//     name: "harshika patle", 
+//     bio: "Mobile app developer building Android and Flutter apps" 
+//   },
+//   { 
+//     name: "Sneha malekar", 
+//     bio: "I am full stack web developer from nagpur" 
+//   },
+//   { 
+//     name: "sam khulsange", 
+//     bio: "DevOps enthusiast focused on cloud and CI/CD pipelines" 
+//   }
+// ];
+
+// const cardsContainer = document.querySelector(".cards");
+// const input = document.querySelector("input");
+
+// function showUsers(filteredUsers) {
+//   cardsContainer.textContent = "";
+
+//   if (filteredUsers.length === 0) {
+//     cardsContainer.innerHTML = "<p style='color:white;'>No user found</p>";
+//     return;
+//   }
+
+  // filteredUsers.forEach(user => {
+  //   const card = document.createElement("div");
+  //   card.classList.add("card");
+
+  //   const heading = document.createElement("h2");
+  //   heading.textContent = user.name;
+
+  //   const para = document.createElement("p");
+  //   para.textContent = user.bio;
+
+  //   card.appendChild(heading);
+  //   card.appendChild(para);
+  //   cardsContainer.appendChild(card);
+  // });
+
+
+  //instead of user ek ek object lene ke sirf name input lena hai tio {name} ya {name, bio} aeise likh skte
+
+//   filteredUsers.forEach(user => {
+//     cardsContainer.innerHTML +=
+//     `
+//     <div class="card">
+//       <h2>${user.name}</h2>
+//       <p>${user.bio}</p>
+//     </div>
+//     `;
+//   });
+// }
+
+
+// showUsers(users);
+
+
+// function debounce(fun, delay =300){
+//   let timeout;
+//   return (...args)=>{
+//     clearTimeout(timeout);
+//     timeout = setTimeout(()=> fun(...args), delay);
+//   }
+// }
+
+
+// input.addEventListener("input", debounce(
+//   (e) => {
+//   const searchText = e.target.value.toLowerCase();
+
+//   const filtered = users.filter((user) =>
+//     user.name.toLowerCase().includes(searchText) ||
+//     user.bio.toLowerCase().includes(searchText)
+//   );
+
+//   showUsers(filtered);
+// }
+// ,200));
+
+
+
+
+
+
+
+
 
