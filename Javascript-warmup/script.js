@@ -349,7 +349,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 
 //first class function  - function  ko values ki taraf treat kar skte aur variable me store aur function me pass kar skte
-//higher order function - jo fucntion dusra fun return ya accet kare
+//higher order function - jo fucntion dusra fun return ya accept kare
 //pure function - jo outer value change na kare
 //impure function - jo outer value change karta hai 
 
@@ -1305,6 +1305,43 @@ let ab = document.querySelector("#abcd");
 
 
 
+
+
+
+
+
+
+
+
+//-----------------------------SCOPES
+
+// 1. function scope - function ke andar hi youse ho skte 
+// 2. Block scope - {} braces ke andar hi youse ho skte hai ( if, else,while)
+// 3. global scope - pure code me kahibhi use ho skte hai 
+
+//--------------------- JS - lexical scoping  
+
+//dynamic scoping js me nahi hoti .
+// ex:
+
+// let a = 12;
+// function abcd() {
+//   console.log (a);  
+// }
+
+// function defg() {
+//   let a = 13;
+//   abcd();   //this will print 12, if js were dynamic scoping it could print 13
+// }
+// defg();
+
+
+
+
+
+//--------------------------EXECUTION CONTEXT  ( box ( memory + execution phase))
+
+// JS jeise hi koi fucnction dekhta hai veise huuuui,  js banaata hai execution context, ye ek process hai jo ki do different phases mein chalta hai, memory phase and doosre ka naam hai execution phase
 
 
 
