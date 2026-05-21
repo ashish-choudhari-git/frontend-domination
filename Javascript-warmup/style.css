@@ -13,7 +13,9 @@
 html,body{
     height: 100%;
     width: 100%;
-        background-color: black;
+    background-color: black;
+    color : white;
+    padding: 10px;
 }
 
 
@@ -135,7 +137,7 @@ ul{
 
 
 /* real time search */
-
+/* 
 .container{
     height: 500px;
     width: auto;
@@ -173,4 +175,6 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
+
+

@@ -1,7 +1,83 @@
-//() {} [] are reference , rest are primitive
 /*
+TOPICS COVERED: 
+primitive datatype
+reference datatype
+spread operator
+iterable( array, string, object, map , set)
+for in loop 
+for of loop            ForEach is array method
+Object.keys(person) 1 array return
+Object.values(person) 1 array return
+Object.entries(person) 2 array return [ key, value]
+7 falsy values
+callback 
+promises
+types of function 4-4
+Object creation , retrieval (2 . ["n"]), addition 
+[value can be fun, obj, val]
+object.create(parent), Object.getPrototypeOf(child)
+Object.freeze(person) (no val change, no add, shallow freeze, no nested freeze), Object.seal(person) (value change, no add)
+for copying object : Object.assign({},{x:2},obj1,obj2) OR  {...obj} (both store nested object reference) OR JSON.parse(JSON.stringify(person)) better (no copy of set and date gadbad) OR StructuredClone(person) best
+Deconstructor [a,b,...rest], [a,,c] [a,b] [...arr,...arr2] merge, [a,b] =[x,y]swap , no confirmation of existence then  ?. is used
+set -> add has size delete clear
+map -> get set has delete 
+const user = undefined console.log(user?? "ashish") NULLISH
+typeof checks the primitive datatype of value
+typeof NaN === 'number' //true
+typeof {} [] array null ->  is object
+instanceof checks whether the object is created from specific constructor/class.  let arr = []; arr instanceof Array/Object/String
+Closure
+Explicity conversion
+Failed numerical operation -> NaN output
+Hoisting
+IIFE
+Arrays 9 methods
+[prop] in object
+obj.aa vs obj["aa"] 
+DOM    className html collection , querySelectorAll nodelist forEach forof
+innerText textContent* outerText
+Attribute ( getAttribute, . set, has , remove)
+kisi element ko DOM se remove karna hai to , element ko select karna aur .remove() .removeChild()
+DDM : .prepend(ab) .append(ab)
+select element ab.classList array classList[0] .add("blue") .remove .toggle .contains .length .value all classes in single string
+let ed = document.querySelectorAll("ul li:nth-child(2n)"); select every 2nd element
+Event listeners   addEventListener removeEL   , dblclick, click, change, submit, input, keydown    fileinput.click();
+mouseover, out, move (bubble)    mouseenter/mouseleave ( keydown, fileupload, mousemove, form, select file)
+Event Bubbling [ul pe event , li pe stop propagation]
+Event capturing
+Event Flow  [capturing, bubbling phase (defualt on). By default, JavaScript uses event bubbling. Capturing can be enabled by passing true]
+Form [ e.preventDefault(), iniline validation( autocomplete="off", required, minlenght,maxlength , not reliable), inp[0].value.length,regex.test("as@gmail") ]
+error dkhana hai to classs banan, display =none , style.display  "initial" jabb error aaye
+setTimeout(function, time) clearTimeout() setInterval() clearInterval
+Date is built in constructor function ( new Date(), getFullYear2026, Month0-11, date1-31, hours0-11, day0-6, minutes 0-59, second 0-59)
+localStorage, sessionStorage, cookies ( setItem("name","ash"), getItem, removeItem, clear(), document.cookie ="name=ash")
+Dark-light-mode script
+Scoping ( Js does not have dynamic scoping, it hass lexical scopiing. global and block scope)
+Execution Context ( its process, memory phase and execution phase)
+debouncing
+Real time seaching , card add, toaster 
+This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga, EventListener me jispe event laga hai wo(element))
 
-// Data types in Javascript 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+s
+//() {} [] are reference , rest are primitive
+
+// Data types in Javascript s
 
 // 1. Primitive data type 
 // 2. Reference data type - [],{},()- It is not copied directly it just creates a reference (To copy we can use spread operator)
@@ -74,7 +150,7 @@ for (let [key, value] of Object.entries(person)) { //ye 2 array return karega, e
 
  ()=> 12; agar sirf ek value return karni hai tab , without curly braces we can do this
 
- (f)(); IIFI
+ (f)(); IIFE
 
 // func call karte time argument rkhte aur function defined karte kaam time brackets me parameter
 
@@ -90,6 +166,10 @@ function getSong(){
 
 
 //callback
+
+//callback is fucntion passed to another function , whcih is executed later after completion of some work.
+//callback hell is multiple callback nested inside each other
+
 function connectToServer(fun){
   console.log("Connecting to server...");
   fun();
@@ -108,11 +188,20 @@ connectToServer(function(){
 }); //callback hell
 
 
+problem with callback : 
+callbackhell, less readable code, diffuclut debuging, error handeling
 
+
+callback and promise handles : 
+asynchronous operation ,timers, api call, file handleling
 ---------------------------------------------------------------
 
 
 //promises
+
+//promise is object that represents the eventual "completion or failure" of an asynchronous operation
+//better error handeling, improve readability, chaining async operations
+//3 states : pending , fullfilled, rejected
 
 function connectToServer(){
   console.log("connecting to server");
@@ -155,10 +244,10 @@ connectToServer()
 
 
 //-------------- objects  -----------
-// unordered collection of key → value pairs 
+//unordered collection of key → value pairs 
 //key(properties) is always string or symbol and value can be anything( fucntion, obj, value)
 
-
+ 
 
 //creation of object 
 
@@ -172,14 +261,19 @@ connectToServer()
 
 //2. 
 // const proto = { greet() { return "hi"; } };   // , je baad function bhi likh skte
-// { greet: [Function: greet] }
 // console.log(proto.greet());
 
 
 //3
+// Object.create() used to create new object with specified prototype object
+// prototypal inheritance
+// Object.getPrototypeOf() returns the prototype of specified object
+
 // const parent = { a: 1 };
 // const child = Object.create(parent);
-// console.log(Object.getPrototypeOf(child))
+// parent become prototype of child. child can access properties and method from parent
+// console.log(Object.getPrototypeOf(child))   // object return hoga
+// console.log(child.__proto__)   // same as above
 // console.log(child.a)
 // console.log(child) //child is still undefined
 // child.a // 1 from prototype
@@ -218,7 +312,7 @@ connectToServer()
 // const newObj = {...parent}
 
 
-//assign aur deconstructor dono case me ,yaha naya object banaya copy karke , par nested object ka reference store hua, isliye old obj ki values change hori
+// assign aur deconstructor dono case me ,yaha naya object banaya copy karke , par nested object ka reference store hua, isliye old obj ki values change hori
 // const newObj = {...person}
 // newObj.age = 22
 // newObj.address.city = "Nagpur"
@@ -274,11 +368,13 @@ connectToServer()
 
 //-----Sets
 
-let num = new Set([1,2,2,3]);    // only unique elem
+let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //set constructor takes iterables
 // console.log(num);
 
 // num.add(4);
-// num.add([4,5]);
+// num.add([4,5]);  ye as a array store hoga
+// console.log(num);
+
 // num.add("ashish");
 // console.log(num);
 
@@ -302,7 +398,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // const userMap = new Map( [
 //   ["age", 20],["name", "ashish"],
 // ]
-// );
+// );   like 2d array structure, its not 2d array
 
 // userMap.set("age", 20);
 // userMap.set("name", "ashish");
@@ -314,7 +410,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 // console.log(userMap.get("name"));
 
-// for(const [key,val] of userMap){
+// for(const [key,val] of userMap){        //destructuring
 //   // console.log( key + " " + val);
 //   console.log(`${key} : ${val}`);
 // }
@@ -333,11 +429,12 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 //true + false = 1 all .falsy values are 0   
 // typeof NaN === 'number' //true
+// and typeof array is object
 
 
 // let a = []
-// a instanceof Array //true  . instance of works only with reference values ( array , object) and not with primitive values like number,string
-// and typeof array is object
+// a instanceof Array //true
+//"hello" instanceof String //false bcz "hello" is primitive
 
 
 // function show(a,b,...rest){ console.log (a,b,rest)}  show(1,2,3,4);
@@ -361,6 +458,10 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 //jab function koi dusra function return karta hai aur return hone wala function apne parent ke variable ka hamesha use karta hai usko closure bolte. even after outer function is returned
 
+//A closure in javascript is created when an inner function remembers and access varibales of its outer function scope evenn after outer function has finished executing.
+
+//inner funciton apne lexical scope ke varibales of yaad rakhta hai
+
 // function createCounter() {
 //   let count = 0; // private variable
 
@@ -373,6 +474,12 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // const counter = createCounter();
 // counter(); // 1
 // counter(); // 2
+
+//jab closure call hota hai tab js , closure function and uske varibales ka backlink bnta hai [[environment]] me
+
+//fayda - 
+// 1. variables ko private rakh skte
+// 2. encapsulation , memoizatiin, maintaining state in async operations              
 
 
 
@@ -450,7 +557,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 
 //----------Hoisiting
-// it is behaviour of js  of movin varibales and function declaration to top 
+// it is behaviour of js  of move varibales and function declaration to top 
 
 // only declration is hoisted , not initialization
 // fucntion declartionn - can be called before declaration        abcd() function abcd(){ -- }
@@ -462,13 +569,13 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 
 
-
-//IIFE are used for private variable
+// Immediately Invoked Function Expression
+//IIFE are used to create private variable.
 
 // let ash = (function(){
-//   let balance = 0;  // we cant acces balance varibale directly
+//   let balance = 0;  // we cant acces balance varibale directly //object is return , not function 
 //   return {
-//     getBalance : function(){
+//     getBalance : function(){        //ye dono function closure hai
 //       return balance;
 //     },
 //     setBalance: function(val){
@@ -505,8 +612,6 @@ let num = new Set([1,2,2,3]);    // only unique elem
 //   // return a-b;
 // })
 
-// arr.sort().reverse(); 
-
 //descending ke liye arr.sort().reverse()  yes, kaam karta hai
 // console.log(arr);
 
@@ -515,7 +620,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 // let red = [1,2];
 
-// .reduce( accumulator, currentvalue, currentindex, array)  array contain inital vlaue for accumulator
+// .reduce( accumulator, currentvalue, currentindex, array) array contain inital value for accumulator
 
 // let ans = red.reduce(function(acc,val){
 //   return acc + val;
@@ -551,7 +656,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // let newArr  = [...arr] // ye values store kareega without reference  //copy
 
 
-// reduce find some every map filter 
+// map filter reduce find some every  
 
 
 
@@ -612,7 +717,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 
 // document.getElementById   //document ke baad body mat dalna
-// document.querySelector("#idkaname")   
+// document.querySelector("#idkaname")
 // document.getElementsByClassName  //return HTML collections
 // document.getElementsByName
 // document.getElementsByTagName
@@ -627,8 +732,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // body.querySelector("h1").style.color = "red"; //sirf first waal hi select hoga
 // document.body.querySelectorAll("h1")[0].style.color = "red"; 
 // let abcd = document.body.querySelectorAll("h1");  //nodelist return karta hai, array jeisa nahi hai, forof loop chala skte
-// abcd[1].style.color = "red"; 
-
+// abcd[1].style.color = "red";                                                                                                                                                                                                 
 
 // for(const a of abcd){
 //   a.style.color = "red"; 
@@ -641,10 +745,29 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // console.dir(element)
 // let h1 = body.querySelector("h1");
 // h1.innerHTML = "<i>red</>";  
-//same textContent, innerText bas text badlta
-//outerHTML tag ko bhi select karlega text ke saath
+//agar yaha textContent use karte , the browser treats it as plain text, not HTML.
+// outerHTML tag ko bhi select karlega text ke saath
 
 // h1.hidden = true;
+
+
+//textContent
+// Returns all text exactly as present in the DOM. Includes hidden elements. faster than innertext bcz inT computes styling
+//<div id="box">
+//  Hello
+//  <span style="display:none">Hidden</span>
+//  World
+// </div>
+// op: Hello Hidden World
+
+//innerText 
+// Returns only the text visible to the user.
+// "Hello World"
+
+
+
+
+
 
 
 
@@ -678,7 +801,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 
 //-------remove any element
 // let h1 = document.body.querySelector("h1");
-// h1.remove();
+// h1.remove();s
 
 
 
@@ -717,7 +840,7 @@ let num = new Set([1,2,2,3]);    // only unique elem
 // cd.forEach(function(val){
 //   console.log(val.textContent);             //for loop se bhi kar skte
 // })
-
+// forEach() is an array method used to iterate over array that runs a callback function for every element in the array. 
 
 // textContent(faster) > innerText (hidden wale ko nahi nikalta)
 
@@ -893,24 +1016,28 @@ let ab = document.querySelector("#abcd");
 
 
 // --------------------EVENT BUBBLING
+
+//Event bubbling is a mechanism in JavaScript where an event starts from the target element and propagates upward
  
-// Bubbling means: when an event happens on a child element, it also “bubbles up” and triggers the same event on its parent, then grandparent… up to document.  targeted elem se pure doc tak jayega propagation for sure
+// Bubbling means: when an event happens on a child element, it also “bubbles up” and triggers the same event on its parent, then grandparent up to document.  
+// targeted elem se pure doc tak jayega propagation for sure
 
 // ex1
 // parent = document.querySelector("#parent");
 // child = document.querySelector("#child");
 // parent.addEventListener("click", () => console.log("parent mouseover"));
 // child.addEventListener("mouseover", () => console.log("child mouseover"));
-
+//yaha pe event bubbble hoga par parent pe event alg hai to parent ka event nahi chalega
 
 // ex2
-// ul = document.querySelector("ul");
+// ul = document.querySelector("ul"); 
 // ul.addEventListener("click", (dets)=>{
-//   dets.target.classList.toggle("lt");
+//   dets.target.classList.toggle("line-through");
 // });
-//event start li se hota hai(click event) aur bubble hoke ul tak pahochta hai aur uska bhi event execut ekar deta
-//solution is , to stop propagation
+//jis li pe click karege, wo specific item pe changes kar sakte, kyuki li se event ul tak bubble hoga
 
+
+//agar bubble up nahi karna hai to
 // li = document.querySelector("li");
 // li.addEventListener("click", (e)=>{
 //   e.stopPropagation();
@@ -921,6 +1048,8 @@ let ab = document.querySelector("#abcd");
 
 
 //--------------Event capturing
+
+// Event capturing is a mechanism where an event propagates from the top to the target element
 
 // a = document.querySelector(".a");
 // b = document.querySelector(".b");
@@ -943,18 +1072,6 @@ let ab = document.querySelector("#abcd");
 //agar button pe clck kiye to button - > C -> A, event bubbling hora
 
 
-// jab bhi aap click krte ho YA koi bhi event raise krte ho-> to aapka jo EVENT FLOW do phases mein chalta hai:
-// phase 1: event top level element se neeche ki taraf aayega
-// phase 2: event raised element se parent ki taraf jaayega
-// aur pahle phase 1 hoti hati h, pa rwo by default band rhti h,
-// if usko on kiya to phase 1 ka result milega then phase 2, both.
-//  jo chize pahse 1 me execute ho gai wo phase 2 nai hogi
-//capture phase on karle ke liey listener ke last curcly braces ke aage , true likhdo
-// ex : objectname.addEventListener("",()=>{}, true);
-
-
-
-//event jaha bhi occur kiya, pattern upar se niche ki taraf ayega
 
 
 
@@ -963,23 +1080,44 @@ let ab = document.querySelector("#abcd");
 
 
 
+//Event flow , propagation
 
-//-------EXercise : Live charcter counter
-// let inp = document.querySelector("input");
-// val = document.querySelector("#val");
-// inp.addEventListener("input", (dets)=>{
-//   // console.log(dets.target.value.length);
 
-//   let left = 20 - dets.target.value.length;
-//   val.textContent = left;
+// jab bhi koi event raise hota hai (click, mouseover etc.), to event flow 2 phases me chalta hai:
 
-//   if(left < 0){
-//     val.style.color = "red";
-//   }else{
-//     val.style.color = "white";
-//   }
+// phase 1 : Event Capturing (Top → Down)
+// event top level element se target element tak aata hai
+// capturing phase by default OFF hoti hai
 
-// });
+// phase 2 : Event Bubbling (Bottom → Up)
+// event target element se parent elements ki taraf jaata hai
+// JavaScript by default bubbling use karta hai
+
+
+// By default, JavaScript uses event bubbling.
+// Passing true in addEventListener  as third parameter enables capturing phase
+// capture phase on karle ke liye listener ke last braces ke aage , true likhdo
+// capturing ON karne ke liye:
+// object.addEventListener("", ()=>{}, true);
+// modern syntax:
+// object.addEventListener("", ()=>{}, { capture: true });
+
+// agar koi listener capturing phase 1 me execute ho gaya, to wo bubbling phase me dobara execute nahi hota
+
+// ex:
+// grandparent → parent → middle → child
+// sirf parent pe capturing ON hai
+
+// child pe click karne par output : parent  child  middle  grandparent
+
+// stopPropagation() event ko aage propagate hone se rokta hai
+
+
+
+
+
+
+
 
 
 
@@ -1045,6 +1183,7 @@ let ab = document.querySelector("#abcd");
 
 
 // setTimeout(function, time)
+
 // setTimeout(()=>{
 //   console.log("ashish");
 // }, 2000);
@@ -1102,8 +1241,9 @@ let ab = document.querySelector("#abcd");
 
 //-----------------------------Dates and time
 // In JavaScript, all date & time stuff revolves around one built-in object:
-//Date is object
-// const now = new Date();
+// Date is a built-in constructor function in JavaScript used to create Date objects. its is not a class.
+// const now = new Date();    
+// it return object. typeof now is "object"
 // console.log(now); // Day month  date time(H:M:S) GMS+0530 (ISD)
 
 // console.log(Date.now()); // milliseconds since 1970 //1706781234567
@@ -1122,14 +1262,18 @@ let ab = document.querySelector("#abcd");
 
 
 
+// Historically, JavaScript did not have real class syntax. Later, JavaScript introduced class syntax.
+
+
+
 
 
 
 //--------------------LocalStorage, Session Storage , Cookies
 
-// localStorage-> browser me data store karna ~5MB 
-// sessionStorage -> data temporarily store karta hai
-// cookier -> store data in less amount    ~4kb
+// localStorage-> browser me data store karna, ~5MB ,Never expires, Stores data permanently until: user clears browser data, app removes it, Use cases : dark mode ,language preference, cart data
+// sessionStorage -> data temporarily store karta hai, ~5MB , Removed when tab closes
+// cookies -> store data in less amount , ~4kb, Can set expiry, sent to server with every request
 
 
 
@@ -1204,6 +1348,11 @@ let ab = document.querySelector("#abcd");
 //   localStorage.setItem("theme", newTheme);
 // });
 
+
+
+// Why JWT/session tokens are often stored in cookies?
+// Because cookies support: HttpOnly, Secure, SameSite which improve security.
+// localStorage is vulnerable to XSS attacks because JS can access it.
 
 
 
@@ -1321,7 +1470,7 @@ let ab = document.querySelector("#abcd");
 
 //--------------------- JS - lexical scoping  
 
-//dynamic scoping js me nahi hoti .
+// dynamic scoping js me nahi hoti .
 // ex:
 
 // let a = 12;
@@ -1342,6 +1491,180 @@ let ab = document.querySelector("#abcd");
 //--------------------------EXECUTION CONTEXT  ( box ( memory + execution phase))
 
 // JS jeise hi koi fucnction dekhta hai veise huuuui,  js banaata hai execution context, ye ek process hai jo ki do different phases mein chalta hai, memory phase and doosre ka naam hai execution phase
+
+// Mera naam ashish choudhari hai, mere notes h , kuchh bhi likhuga , meri marjhiiiii
+
+
+
+
+
+
+
+//--------------------------------TOASTER
+
+
+// function createToaster(config){
+
+//   let parent = document.querySelector(".parent");
+
+//   parent.className += `
+//   ${config.positionX === "right" ? "right-5" : "left-5"}
+//   ${config.positionY === "top" ? "Top-5" : "bottom-5"}
+//   `;
+
+//   return function(notification){
+//     // let box = `
+//     //             <div class="notification bg-red-800 text-white pointer-event-none px-6 py-4  inline-block rounded-lg">
+//     //                   ${notification}
+//     //                 </div>
+//     //           `;
+
+//     // document.querySelector(".parent").insertAdjacentHTML("beforeend", box);
+//     // appendChild() expects a DOM element, but box is a string.
+
+
+
+//     let box = document.createElement("div");
+//     box.textContent= notification;
+//     box.className = `notification pointer-event-none px-6 py-4  inline-block rounded-lg  transition-all duration-900 ease-in-out
+//     ${config.theme === "dark" ? "bg-white text-black" : "bg-green-800 text-white"}
+//     `;
+
+
+//     document.querySelector(".parent").appendChild(box);
+
+
+//     setTimeout(() => {
+
+//       box.classList.add("opacity-0", "translate-x-10");
+
+//       setTimeout(() => {
+//         box.remove();
+//       }, 500);
+
+//     }, config.duration * 1000);
+//   }
+// }
+
+
+
+// let toaster = createToaster({
+//   theme : "dark", 
+//   positionX : "right",
+//   positionY :"top",
+//   duration : 3
+// });
+
+// toaster("You opened new business");
+
+// setTimeout(()=>{
+//   toaster("Your bank is credited with ₹ 10,00,000");
+// }, 2000);
+
+// setTimeout(()=>{
+//   toaster("You woke up !");
+// }, 4000);
+
+
+
+
+
+
+
+
+
+// This keyword
+
+
+// this keyword special keyword hai, kyuki , jaise ki baaki saare keyword ki "value ya unka nature" same rehta hai, this ki value ya nature badal jaata hai is baat se ki aap usey kaha youse kar rahe ho
+
+
+// 1. global scope 
+// console.log(this);
+//global scope me this ki value window hoti
+
+
+// 2. function scope
+// function abcd(){
+//   console.log(this);
+//   //function ke adnar bhi this ki value window hai
+// }
+// abcd();
+
+
+// 3. method scope 
+
+//object/class ke adnar function ko method bolte
+// let obj = {
+//   name : "Ashish",
+//   sayName : function(){
+//     console.log(this);
+//     console.log(this.name);
+//   },
+//    Caller : ()=>{
+//     console.log(this); yaha epe this ki valeu object nahi  window hgi, fat arrow ke wajah se. 
+//   }
+// }
+
+// obj.sayName();
+//method ke andar this ki value object hoti , this = obj
+
+// Kyunki function object ke through call hua (obj.sayName())
+
+//object ke andar function aur uss fnction ke andar bhi function then console.log(this)kiya, to this ki value firse window hogi. inner function ko normal function ke jagah fat arrow function banao, to uski value object hogi.
+
+//fat arrow hamesha this ki value apne parent se lete
+
+
+//4. Event Handler
+
+// document.querySelector("h1").addEventListener("click", ()=>{
+//   console.log(this); //this ki value wo hogi , jispe add event listener laga hai
+//   this.style.backgroundColor ="red";
+// });
+
+
+// 5. class 
+
+// class Abcd{
+//   constructor(){
+//     console.log("hello");
+//     this.a = 2;  //this keyword = blank object hai/instance
+//   }
+// }
+
+// let val = new Abcd();  //new keyword ek blank object banyega/instance of class
+
+
+
+
+//Manual Binding : bind, call, apply
+//function call karte time, hum manually decide kar sakte hai ki "this" ki value kya hogi. this are method is js.
+
+// let obj = {
+//   name: "ashish"
+// }
+
+// function abcd(){
+// console.log(this); // abcd() kiya to , this = window( global scope). agar abcd.call(obj) , then this = obj
+// }
+
+// abcd.call(obj); 
+// func.call(thisValue,arg1,arg2,arg3)
+
+// function abcd(a,b,c){
+// console.log(this,a,b,c);
+// }
+
+// abcd.call(obj,1,2,3); 
+
+// abcd.apply(obj, [1,2,3]);
+// same as call(), bas arguments array me jaate hai
+
+//let func = abcd.bind(obj, 1,2,3);  does not execute function ,just return new function , with permanently binding value of this
+
+
+
 
 
 
