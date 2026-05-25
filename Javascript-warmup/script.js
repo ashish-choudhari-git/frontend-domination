@@ -57,7 +57,7 @@ Execution Context ( its process, memory phase and execution phase)
 debouncing
 Real time seaching , card add, toaster 
 This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga, EventListener me jispe event laga hai wo(element))
-
+OOP
 
 
 
@@ -262,21 +262,6 @@ connectToServer()
 //2. 
 // const proto = { greet() { return "hi"; } };   // , je baad function bhi likh skte
 // console.log(proto.greet());
-
-
-//3
-// Object.create() used to create new object with specified prototype object
-// prototypal inheritance
-// Object.getPrototypeOf() returns the prototype of specified object
-
-// const parent = { a: 1 };
-// const child = Object.create(parent);
-// parent become prototype of child. child can access properties and method from parent
-// console.log(Object.getPrototypeOf(child))   // object return hoga
-// console.log(child.__proto__)   // same as above
-// console.log(child.a)
-// console.log(child) //child is still undefined
-// child.a // 1 from prototype
 
 
 
@@ -975,7 +960,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 
 //---------/out/Mouseover/move  (bubble)       mouseenter/mouseleave
-let ab = document.querySelector("#abcd");
+// let ab = document.querySelector("#abcd");
 
 // ab.addEventListener("mouseover", function(){
 //   ab.style.backgroundColor = "green";
@@ -1635,7 +1620,15 @@ let ab = document.querySelector("#abcd");
 
 // let val = new Abcd();  //new keyword ek blank object banyega/instance of class
 
+// The new keyword creates a new object instance, links it to the class's prototype, executes the class constructor with value of this pointing to the new object, and finally returns that object.
 
+
+// What does new do?
+// Answer:
+// Creates a new object.
+// Sets prototype.
+// Binds this.
+// Returns object.
 
 
 //Manual Binding : bind, call, apply
@@ -1661,12 +1654,413 @@ let ab = document.querySelector("#abcd");
 // abcd.apply(obj, [1,2,3]);
 // same as call(), bas arguments array me jaate hai
 
-//let func = abcd.bind(obj, 1,2,3);  does not execute function ,just return new function , with permanently binding value of this
+//let func = abcd.bind(obj, 1,2,3);  does not execute/invoke function ,just return new function , with permanently binding value of this
+// The first argument passed to .bind() becomes the this value for the target function
+
+
+
+
+//example
+
+let form = document.querySelector("form");
+let inp = document.querySelectorAll("input");
+
+const userManager = {
+  users :[],
+  init : function (){
+    form.addEventListener("submit", this.submitForm.bind(this))   // this.submitForm matlab function dere , userManagaer.submitForm .
+  },
+  submitForm  : function (e){
+    e.preventDefault();
+    console.log(this); // output : userManager object.
+    //  agar this(obj) bind nahi karte to , this refers to the form element, because event listeners set this to the element that triggered the event. this ki value function ke andar element hoti 
+
+    this.users.push({ name : inp[0].value});
+    // form.rest();
+  }
+}
 
 
 
 
 
+
+
+
+
+
+
+
+//-----------------------------OBJECT ORIENTED PROGRAMMING
+
+
+
+
+// a class is a blueprint. object is instance of class
+
+// JavaScript classes are "syntactic sugar" over the prototype system. JS is not truly class-based internally. it is prototype based
+
+//Object.create(parent)
+//Object.getPrototypeOf(child)
+//child.__proto__
+
+
+
+
+
+
+// When you write:
+
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+
+//     greet() {
+//         console.log(`Hello ${this.name}`);
+//     }
+// }
+
+// const obj1 = new Person("ashish");
+// obj1.greet();
+
+
+
+// JavaScript internally creates something similar to:
+
+// function Person(name) {
+//     this.name = name;
+// }
+
+// Person.prototype.greet = function() {
+//     console.log(`Hello ${this.name}`);
+// };
+
+
+
+
+
+// Constructor Function
+
+// Before ES6 classes:
+// function User(name) {
+//     this.name = name;
+// }
+
+// const u1 = new User("Rahul");
+// console.log(u1); //give u1 object with { name: 'ashish'}
+
+// What does new do?
+// Answer:
+// Creates a new object.
+// Sets prototype.
+// Binds this.
+// Returns object.
+
+
+
+
+
+// Encapsulation
+// Hiding internal details.
+// Encapsulation means "bundling data and methods" together while restricting direct access to internal state.
+
+// class BankAccount {
+//     #balance = 0;
+
+//     deposit(amount) {
+//         this.#balance += amount;
+//     }
+
+//     getBalance() {
+//         return this.#balance;
+//     }
+// }
+
+// const acc = new BankAccount();
+// acc.deposit(1000);
+// console.log(acc.getBalance());
+
+
+
+
+
+
+//Inheritance
+// One class acquires properties of another.
+// class Animal {
+//   eat(){
+//     console.log("eating...");
+//   }
+// }
+
+// class Dog extends Animal {
+//   bark(){
+//     console.log("barking...");
+//   }
+// }
+
+// const obj = new Dog();
+// obj.eat();
+// obj.bark();
+
+
+
+
+
+// Polymorphism
+// Same method behaves differently.
+//it allows same method to have different implementations.
+
+// class Animal {
+//     sound() {
+//         console.log("Animal sound");
+//     }
+// }
+
+// class Dog extends Animal {
+//     sound() {
+//         console.log("Bark");
+//     }
+// }
+
+// class Cat extends Animal {
+//     sound() {
+//         console.log("Meow");
+//     }
+// }
+
+// const animals = [ new Dog(), new Cat() ];
+// animals.forEach(a => a.sound());   //Bark Meow
+
+
+
+
+
+//Abstraction
+// JavaScript doesn't have true abstract classes. but abstraction can be achieved using conventions, errors.
+
+// Common pattern:
+
+// class Shape {
+//     constructor() {
+//         if (this.constructor === Shape) {
+//             throw new Error("Cannot instantiate Shape");
+//         }
+//     }
+// }
+
+// Now:
+// new Shape();     // Throws error.
+
+
+
+
+
+
+// super() Keyword 
+
+// Calls parent constructor.
+
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// class Dog extends Animal {
+//     constructor(name, breed) {
+//         super(name);
+
+//         this.breed = breed;
+//     }
+// }
+
+// const d = new Dog("Tommy", "Labrador");
+
+// Interview:
+
+// super() must be called before using this inside "a derived class constructor"
+
+
+
+
+
+// Static Methods
+
+// Belong to class, not instance.
+
+// class MathUtil {
+//     static add(a, b) {
+//         return a + b;
+//     }
+// }
+
+// MathUtil.add(1,3);    //bleong to class
+
+
+// const m = new MathUtil();    //not to object
+// m.add(); // Error
+
+
+
+
+
+
+//----------Prototypes 
+{
+// Object.create() used to create new object with specified prototype object
+// Object.getPrototypeOf() returns the prototype of specified object
+// prototypal inheritance
+
+// const parent = { a: 1 };
+// const child = Object.create(parent);
+// console.log(Object.getPrototypeOf(child))   // object return hoga
+// console.log(child.__proto__)               // same as above
+// console.log(child.a)                      // 1 from prototype
+// console.log(child)                       //child is still undefined
+                                
+
+// parent become prototype of child. child can access properties and method from parent    
+
+
+
+
+
+
+// prototype confusion clear 
+
+
+// Rule 1: Every object has an internal prototype
+// const parent = {
+//     name: "Ashish"
+// };
+
+// const child = Object.create(parent);
+
+// JS creates:
+// child
+//   ↓
+// parent
+//   ↓
+// Object.prototype
+//   ↓
+// null
+
+// So:
+// Object.getPrototypeOf(child) === parent //true
+// child.__proto__ === parent //true
+
+
+// Rule 2: .prototype is NOT the same as __proto__
+
+
+// function User() {}
+
+// JavaScript automatically creates:
+// User.prototype     a function object
+
+// console.log(typeof User);            // function
+// console.log(typeof User.prototype);  // object
+
+// which is an object:
+// {
+//    constructor: User
+// }
+
+// So:
+// console.log(User.prototype);
+
+// outputs something like:
+// {
+//   constructor: f User()
+// }
+
+// NOT undefined.
+
+
+
+
+
+// When you create a class
+// class Demo {}
+
+// JavaScript also creates a function object.
+
+// Many developers don't realize this:
+
+// class Demo {}
+
+// console.log(typeof Demo);  //function
+
+// When you create an instance
+// const obj = new Demo();
+
+// JS creates:
+// const obj = {};
+
+// Then sets:
+// obj.__proto__ = Demo.prototype;   //Demo.prototype function object has all method and varibales , so object acess it obj.functioname
+
+// So the chain becomes:
+
+// obj
+//  ↓
+// Demo.prototype
+//  ↓
+// Object.prototype
+//  ↓
+// null
+
+//Both functions and classes are themselves objects in JavaScript.
+
+
+// Everything below is true:
+
+// function User(){}
+// User.myName = "Ashish";
+// console.log(User.myName);   //Ashish
+// class User(){}
+// User.myName = "Ashish";
+// console.log(User.myName);   //Ashish
+
+
+
+
+//prototype chaining and method sharing
+
+
+// class User {
+//     greet() {
+//         console.log("Hello");
+//     }
+// }
+
+// Internally similar to:
+
+// function User(){}
+// User.prototype.greet = function() {
+//    console.log("Hello");
+// };
+
+// So:
+// console.log(User.prototype);
+
+// gives:
+// {
+//    constructor: User,
+//    greet: f
+// }
+
+// NOT undefined.
+
+
+
+//Every function/class in JavaScript has a prototype property that "points to an object". When we create an instance using new, JavaScript sets the instance's internal prototype ([[Prototype]] or __proto__) to that prototype object. This enables prototype chaining and method sharing.
+//only functions/classes have a .prototype property. object does not have it. child.__proto__ = parent , not parent.prototype
+// JavaScript is a prototype-based language. Every object has an internal prototype ([[Prototype]], accessible via __proto__ or Object.getPrototypeOf()), which forms a prototype chain used for property and method lookup. Functions and classes in JavaScript are themselves objects, and each function/class automatically has a special prototype property that points to another object. When we create an instance using the new keyword, JavaScript creates a new object, sets the instance's internal prototype (__proto__) to the constructor's prototype object, executes the constructor with this bound to the new object, and returns the object. Therefore, instance.__proto__ === Constructor.prototype is true. Methods defined inside a class are stored on ClassName.prototype, not copied into every instance, which enables memory-efficient method sharing. When a property or method is accessed, JavaScript first searches the object itself; if not found, it follows the prototype chain (object → Constructor.prototype → Object.prototype → null) until the property is found or the chain ends. This mechanism is called prototype chaining and is the foundation of inheritance in JavaScript. Classes are essentially syntactic sugar over this prototype system.
+
+}
 
 
 
