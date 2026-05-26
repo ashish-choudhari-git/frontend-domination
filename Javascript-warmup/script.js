@@ -56,7 +56,7 @@ Scoping ( Js does not have dynamic scoping, it hass lexical scopiing. global and
 Execution Context ( its process, memory phase and execution phase)
 debouncing
 Real time seaching , card add, toaster 
-This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga, EventListener me jispe event laga hai wo(element))
+This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga , EventListener me jispe event laga hai wo(element))
 OOP
 
 
@@ -169,7 +169,10 @@ function getSong(){
 
 //callback is fucntion passed to another function , whcih is executed later after completion of some work.
 //callback hell is multiple callback nested inside each other
+//function ke andar function, function ke andar function
+//jo function pass kiya jata hai usko callback bolte
 
+ex.1 
 function connectToServer(fun){
   console.log("Connecting to server...");
   fun();
@@ -186,6 +189,78 @@ connectToServer(function(){
     console.log(val);
   });
 }); //callback hell
+
+
+ex.2 
+// libary and real use
+function profiledata(username , cb){
+console.log("fetching profile data...");
+  setTimeout(()=>{
+    cb({ username , age : 17, city : ["nagpur"], id : 80});   //object pass karre
+    }, 2000);
+}
+
+
+function postFetch( id , cb){
+  console.log("fetching posts...")
+  setTimeout(()=>{
+    cb(post : [1,26,3,34]);   //object pass karre
+    }, 2000);
+}
+
+funtion savedPost(id, cb ){ 
+  console.log("fetching saved posts...")
+  setTimeout(()=>{
+    cb(savedpost : [1,46,3,54]);   //object pass karre
+    }, 2000);
+}
+
+
+
+profiledata("ashish", function(data){
+  console.log(data);
+  postFetch( data.id, function(posts){
+    console.log(posts);
+    savedPost(data.id, function(savedPost){
+    consoe.log(savedPost);
+    })
+  })
+})
+
+//callback hell
+
+
+
+// function libraries me likhe rahte, apan bas callback function dete. 
+//ex. mongoose.connect("https://edwsf.com", function(){ xyz})
+paernthesis me apan callback pass karre , jo ki libary me likha hua function exceute karega , conenct karne ke baad
+
+library wala function :
+function profilelekeAoo(username, fnc){
+  setTimeout(()=>{
+    console.log(username);
+    fnc({username, age : 17});   //object pass karee
+    },2000);
+}
+
+apan jab libary use karte :
+
+profilelekeAoo("ashish", fnc({username, age}){  //destructuring
+console.log(username + " has age: " + age);
+})
+
+OR
+
+profilelekeAoo("ashish", fnc(profile){ 
+console.log(profile.username + " has age: " + profile.age);
+})
+
+
+
+
+
+
+
 
 
 problem with callback : 
@@ -1662,23 +1737,23 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 //example
 
-let form = document.querySelector("form");
-let inp = document.querySelectorAll("input");
+// let form = document.querySelector("form");
+// let inp = document.querySelectorAll("input");
 
-const userManager = {
-  users :[],
-  init : function (){
-    form.addEventListener("submit", this.submitForm.bind(this))   // this.submitForm matlab function dere , userManagaer.submitForm .
-  },
-  submitForm  : function (e){
-    e.preventDefault();
-    console.log(this); // output : userManager object.
-    //  agar this(obj) bind nahi karte to , this refers to the form element, because event listeners set this to the element that triggered the event. this ki value function ke andar element hoti 
+// const userManager = {
+//   users :[],
+//   init : function (){
+//     form.addEventListener("submit", this.submitForm.bind(this))   // this.submitForm matlab function dere , userManagaer.submitForm .
+//   },
+//   submitForm  : function (e){
+//     e.preventDefault();
+//     console.log(this); // output : userManager object.
+//     //  agar this(obj) bind nahi karte to , this refers to the form element, because event listeners set this to the element that triggered the event. this ki value function ke andar element hoti 
 
-    this.users.push({ name : inp[0].value});
-    // form.rest();
-  }
-}
+//     this.users.push({ name : inp[0].value});
+//     // form.rest();
+//   }
+// }
 
 
 
@@ -1863,20 +1938,20 @@ const userManager = {
 // Calls parent constructor.
 
 // class Animal {
-//     constructor(name) {
+//     constructor(name, age) {
 //         this.name = name;
 //     }
 // }
 
 // class Dog extends Animal {
-//     constructor(name, breed) {
-//         super(name);
-
+//     constructor(name,age, breed) {
+//         super(name,age);
 //         this.breed = breed;
 //     }
 // }
 
 // const d = new Dog("Tommy", "Labrador");
+//ex 2; user and admin class(all funct)
 
 // Interview:
 
@@ -1983,14 +2058,10 @@ const userManager = {
 
 
 // When you create a class
-// class Demo {}
 
+// class Demo {}
 // JavaScript also creates a function object.
-
 // Many developers don't realize this:
-
-// class Demo {}
-
 // console.log(typeof Demo);  //function
 
 // When you create an instance
@@ -2011,6 +2082,9 @@ const userManager = {
 // Object.prototype
 //  ↓
 // null
+
+
+
 
 //Both functions and classes are themselves objects in JavaScript.
 
@@ -2035,6 +2109,8 @@ const userManager = {
 //         console.log("Hello");
 //     }
 // }
+
+
 
 // Internally similar to:
 
@@ -2061,6 +2137,176 @@ const userManager = {
 // JavaScript is a prototype-based language. Every object has an internal prototype ([[Prototype]], accessible via __proto__ or Object.getPrototypeOf()), which forms a prototype chain used for property and method lookup. Functions and classes in JavaScript are themselves objects, and each function/class automatically has a special prototype property that points to another object. When we create an instance using the new keyword, JavaScript creates a new object, sets the instance's internal prototype (__proto__) to the constructor's prototype object, executes the constructor with this bound to the new object, and returns the object. Therefore, instance.__proto__ === Constructor.prototype is true. Methods defined inside a class are stored on ClassName.prototype, not copied into every instance, which enables memory-efficient method sharing. When a property or method is accessed, JavaScript first searches the object itself; if not found, it follows the prototype chain (object → Constructor.prototype → Object.prototype → null) until the property is found or the chain ends. This mechanism is called prototype chaining and is the foundation of inheritance in JavaScript. Classes are essentially syntactic sugar over this prototype system.
 
 }
+
+
+
+
+//examplle. create text writer with 2 diff color
+
+// function CreatePencil(){
+//   // this.name = name;
+//   this.write = function(name , color){
+//     let h1 = document.createElement("h1");
+//     h1.textContent = name;
+//     h1.style.color  = color;
+//     document.body.appendChild(h1);
+//   } 
+  
+// } 
+
+// let pencil1 = new CreatePencil();
+// let pencil2 = new CreatePencil();
+// pencil1.write("Ashish", "purple");
+// pencil2.write("harsh", "red");
+
+//isme function ka bar bar instance banra , jitne object banayege. which is less memeory efficient. to blank function declare karna . functioName.prototype.write = fun.... then object banana to har object same method share karega. iska beherupiya aur achha tarika , use class.
+
+
+// What new CreatePencil() does internally
+{
+// JavaScript roughly performs:
+
+// Step 1: Create a blank object
+// let obj = {};
+
+// Step 2: Link it to  internal prototype of target function object
+// Object.setPrototypeOf(obj, CreatePencil.prototype);
+// obj.__proto__ = CreatePencil.prototype;  both are same
+
+// Step 3: Call the function with `this = obj`
+// CreatePencil.call(obj);
+
+// Step 4: Return the object
+// return obj;
+}
+
+//example of class
+{
+  // class CreateFun{
+//   constructor(name, color){
+//     this.name = name;
+//     this.color = color;
+//   }
+
+//   write(text){
+//     let h1 = document.createElement("h1");
+//     h1.textContent = text;
+//     h1.style.color = this.color;
+//     document.body.appendChild(h1);
+//   }
+
+//   erase(){
+//     document.querySelectorAll("h1").forEach((elem)=>{
+//       if(elem.style.color == this.color){
+//         elem.remove();
+//       }
+//     });
+
+//   }
+// }
+
+// let pencil1 = new CreateFun("doms","red");
+// let pencil2 = new CreateFun("natraj","black");
+}
+
+
+
+
+
+
+// Synchronous
+// Synchronous execution means tasks are performed one after another, and each task must complete before the next one starts.
+
+// Asynchronous execution means a task can run independently, allowing the program to continue with other work without waiting for that task to finish.
+
+
+// Math.floor(Math.random()* 10 ) * 1000 
+
+
+
+
+
+//promise
+// pr.then().catch().finally()
+
+
+let pr = new Promise((res, rej) => {
+  setTimeout(()=>{ 
+    let val = Math.random() * 10;
+    if (val > 5) {
+    res("fulfilled");
+  } else {
+    rej("rejected");
+  }
+  })
+});
+
+pr.then(() => {
+  console.log("fulfilled");
+}).catch(() => {
+  console.log("rejected");
+});
+
+//promise is just an object which represent state. it is not asynchronous.
+//asynchrous operation is setTimeout, fetch, fs.readFile(..)
+// Promises become useful when some result will come later, asynchronous operation
+
+
+
+//async await
+// cleaner way of handleing promises
+//used to handle asynchronous operations in a cleaner and more readable way. It is built on top of Promises.
+// The async keyword makes a function return a Promise, and the await keyword pauses the execution of that function until the Promise is resolved or rejected without blocking the main thread. Any value returned from the function is automatically wrapped inside Promise.resolve(), and any thrown error becomes a rejected Promise.
+// Async/await provides the same functionality as Promises but with cleaner syntax, better readability, and easier error handling using try...catch, especially when dealing with multiple asynchronous operations
+
+
+async function getUser() {
+  try {
+    const response = await fetch("https://api.vom");
+    const user = await response.json();
+    console.log(user);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function abcd(){
+  try{
+    let val = await pr;
+    console.log(val);
+    
+    // throw new error("SWW");
+  }catch(err){
+    console.log(err);
+  }
+}
+
+abcd();
+
+
+
+
+
+
+
+
+//FETCH API
+
+// JSON.parse(rawdata)
+// - Converts JSON string → JavaScript object.
+// - Synchronous.
+// Example:
+// const obj = JSON.parse('{"name":"John"}');
+
+//rawdata.json() (usually lowercase)
+// Reads the HTTP response body. Parses the body as JSON. Returns a Promise.
+// Asynchronous
+// Response object -> Promise<object>
+// Example:
+// const response = await fetch('/api');
+// const data = await response.json();
+
+
 
 
 
