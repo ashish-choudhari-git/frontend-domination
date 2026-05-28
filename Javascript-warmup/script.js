@@ -1768,7 +1768,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 //-----------------------------OBJECT ORIENTED PROGRAMMING
 
-
+{
 
 
 // a class is a blueprint. object is instance of class
@@ -1816,7 +1816,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 
 // Constructor Function
-
+{
 // Before ES6 classes:
 // function User(name) {
 //     this.name = name;
@@ -1831,12 +1831,13 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // Sets prototype.
 // Binds this.
 // Returns object.
-
+}
 
 
 
 
 // Encapsulation
+{
 // Hiding internal details.
 // Encapsulation means "bundling data and methods" together while restricting direct access to internal state.
 
@@ -1855,13 +1856,14 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // const acc = new BankAccount();
 // acc.deposit(1000);
 // console.log(acc.getBalance());
-
+}
 
 
 
 
 
 //Inheritance
+{
 // One class acquires properties of another.
 // class Animal {
 //   eat(){
@@ -1878,12 +1880,13 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // const obj = new Dog();
 // obj.eat();
 // obj.bark();
-
+}
 
 
 
 
 // Polymorphism
+{
 // Same method behaves differently.
 //it allows same method to have different implementations.
 
@@ -1907,12 +1910,13 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 // const animals = [ new Dog(), new Cat() ];
 // animals.forEach(a => a.sound());   //Bark Meow
-
+}
 
 
 
 
 //Abstraction
+{
 // JavaScript doesn't have true abstract classes. but abstraction can be achieved using conventions, errors.
 
 // Common pattern:
@@ -1928,13 +1932,13 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // Now:
 // new Shape();     // Throws error.
 
-
+}
 
 
 
 
 // super() Keyword 
-
+{
 // Calls parent constructor.
 
 // class Animal {
@@ -1956,13 +1960,13 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // Interview:
 
 // super() must be called before using this inside "a derived class constructor"
-
+}
 
 
 
 
 // Static Methods
-
+{
 // Belong to class, not instance.
 
 // class MathUtil {
@@ -1976,7 +1980,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 // const m = new MathUtil();    //not to object
 // m.add(); // Error
-
+}
 
 
 
@@ -2136,7 +2140,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 //only functions/classes have a .prototype property. object does not have it. child.__proto__ = parent , not parent.prototype
 // JavaScript is a prototype-based language. Every object has an internal prototype ([[Prototype]], accessible via __proto__ or Object.getPrototypeOf()), which forms a prototype chain used for property and method lookup. Functions and classes in JavaScript are themselves objects, and each function/class automatically has a special prototype property that points to another object. When we create an instance using the new keyword, JavaScript creates a new object, sets the instance's internal prototype (__proto__) to the constructor's prototype object, executes the constructor with this bound to the new object, and returns the object. Therefore, instance.__proto__ === Constructor.prototype is true. Methods defined inside a class are stored on ClassName.prototype, not copied into every instance, which enables memory-efficient method sharing. When a property or method is accessed, JavaScript first searches the object itself; if not found, it follows the prototype chain (object → Constructor.prototype → Object.prototype → null) until the property is found or the chain ends. This mechanism is called prototype chaining and is the foundation of inheritance in JavaScript. Classes are essentially syntactic sugar over this prototype system.
 
-}
+
 
 
 
@@ -2160,7 +2164,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 // pencil2.write("harsh", "red");
 
 //isme function ka bar bar instance banra , jitne object banayege. which is less memeory efficient. to blank function declare karna . functioName.prototype.write = fun.... then object banana to har object same method share karega. iska beherupiya aur achha tarika , use class.
-
+}
 
 // What new CreatePencil() does internally
 {
@@ -2210,7 +2214,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 }
 
 
-
+}
 
 
 
@@ -2227,71 +2231,73 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 
 //promise
+{
 // pr.then().catch().finally()
 
 
-let pr = new Promise((res, rej) => {
-  setTimeout(()=>{ 
-    let val = Math.random() * 10;
-    if (val > 5) {
-    res("fulfilled");
-  } else {
-    rej("rejected");
-  }
-  })
-});
+// let pr = new Promise((res, rej) => {
+//   setTimeout(()=>{ 
+//     let val = Math.random() * 10;
+//     if (val > 5) {
+//     res("fulfilled");
+//   } else {
+//     rej("rejected");
+//   }
+//   })
+// });
 
-pr.then(() => {
-  console.log("fulfilled");
-}).catch(() => {
-  console.log("rejected");
-});
+// pr.then(() => {
+//   console.log("fulfilled");
+// }).catch(() => {
+//   console.log("rejected");
+// });
 
 //promise is just an object which represent state. it is not asynchronous.
 //asynchrous operation is setTimeout, fetch, fs.readFile(..)
 // Promises become useful when some result will come later, asynchronous operation
-
+}
 
 
 //async await
+{
 // cleaner way of handleing promises
 //used to handle asynchronous operations in a cleaner and more readable way. It is built on top of Promises.
 // The async keyword makes a function return a Promise, and the await keyword pauses the execution of that function until the Promise is resolved or rejected without blocking the main thread. Any value returned from the function is automatically wrapped inside Promise.resolve(), and any thrown error becomes a rejected Promise.
 // Async/await provides the same functionality as Promises but with cleaner syntax, better readability, and easier error handling using try...catch, especially when dealing with multiple asynchronous operations
 
 
-async function getUser() {
-  try {
-    const response = await fetch("https://api.vom");
-    const user = await response.json();
-    console.log(user);
-  } catch (error) {
-    console.error(error);
-  }
-}
+// async function getUser() {
+//   try {
+//     const response = await fetch("https://api.vom");
+//     const user = await response.json();
+//     console.log(user);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
-async function abcd(){
-  try{
-    let val = await pr;
-    console.log(val);
+// async function abcd(){
+//   try{
+//     let val = await pr;
+//     console.log(val);
     
-    // throw new error("SWW");
-  }catch(err){
-    console.log(err);
-  }
+//     // throw new error("SWW");
+//   }catch(err){
+//     console.log(err);
+//   }
+// }
+
+// abcd();
+
 }
 
-abcd();
 
 
 
 
 
-
-
-
-//FETCH API
-
+//------------------------------------FETCH API
+{
 // JSON.parse(rawdata)
 // - Converts JSON string → JavaScript object.
 // - Synchronous.
@@ -2306,8 +2312,61 @@ abcd();
 // const response = await fetch('/api');
 // const data = await response.json();
 
+// fetch("/api", { method : 'POST' , body :  JSON.stringify({ name, age}));
+
+}
 
 
 
 
 
+
+//-----------------------------------Design pattern
+//  1. Module pattern (IIFE)
+//  2. Revealing Module pattern
+//  3. factory Function Pattern 
+//  4. Observer Pattern (basic pub-sub)
+
+
+
+// 1. Module Pattern
+// module pattern ek design pattern hai, isme code IIFE ek andar likhte h taki "varibles aur function private rahe".
+// iss pattern ka fayda hai  "encapsulation( data hiding) aur clean , reusable and manageable code ban sake"
+
+
+// (fun)();
+/* 
+let val = (function(){
+  let bankBalance = 100;
+  function getBal(){
+  return bankBalance;
+  }
+
+  function addBal(money){
+  bankBalance += money;
+  }
+
+  //this functions are not accessible outside. so we return it
+
+  return {
+  getBal, addBal
+  }
+ })();
+
+ val.getBal();
+ val.addBal(300);
+ val.getBal();
+*/
+
+
+
+
+
+// 2. Revealing Module pattern
+// IIFE ke andar func return karte waqt , function ka nam chaneg  kar skte
+// return { check : getBal, add : addBal }
+
+
+//3. Factory function pattern
+
+//function jo objects create karta hai , without class aur new keyword.
