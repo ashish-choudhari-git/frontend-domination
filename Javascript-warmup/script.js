@@ -1861,7 +1861,6 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 
 
-
 //Inheritance
 {
 // One class acquires properties of another.
@@ -2327,7 +2326,7 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 //  3. factory Function Pattern 
 //  4. Observer Pattern (basic pub-sub)
 
-
+{
 
 // 1. Module Pattern
 // module pattern ek design pattern hai, isme code IIFE ek andar likhte h taki "varibles aur function private rahe".
@@ -2369,4 +2368,298 @@ let val = (function(){
 
 //3. Factory function pattern
 
-//function jo objects create karta hai , without class aur new keyword.
+//function jo naya objects create karta hai , without class aur new keyword.
+
+// function createProduct(name, price){
+//   let stock = 10;
+//   return {
+//     name,
+//     price,
+//     buy(qty){
+//       if(qty <= stock){
+//         stock -= qty;
+//         console.log(`booked - ${stock} pieces left`)
+//       }else{
+//         console.error(`we only have ${stock} left`)
+//       }
+//     },
+//     refill(qty){   
+//         stock += qty;
+//         console.log(`added - ${stock} pieces now`)
+//     },
+//   }
+// }
+
+
+// let iphone = createProduct(iphone, 10000);
+// iphone.buy(23);
+// iphone.refill(2);
+
+
+
+//4. Observer Pattern ( pub-sub)
+
+// class Youtube{
+//   constructor(){
+//     this.subscriber = [];
+//   }
+
+//   subscribe(user){
+//     this.subscriber.push(user);
+//     user.update(`You have subscribed the channel`);
+//   }
+
+//   unsubscribe(user){ 
+//     this.subscriber= this.subscriber.filter(sub => {
+//       sub != user
+//     });  //overwrite whole
+//     user.update(`You have unsubscribed the channel`);
+//   }
+
+//   notify(message){
+//     this.subscriber.forEach(sun => sub.update(` ${this.name}message`));
+//   }
+// }
+
+// class User{
+//   constructor(name){
+//     this.name = name;
+//   }
+
+//   update(data){
+//     console.log(`${this.name} data`);
+//   }
+// }
+
+
+// let Duveria = new Youtube();
+// let ashish = new User("ashish");
+// let sam = new User("sam");
+
+// Duveria.subscribe(ashish);
+// Duveria.subscribe(sam);
+
+// sheriyans.notify("new video uploaded");
+
+}
+
+ 
+
+// Query Optimization
+
+//debouncing , throttling, lazzy loading, code splitting, avoiding DOM refraint, memory leak
+{
+
+
+//Debouncing
+// Debouncing is a technique that delays function execution until a specified time has passed after the last event trigger.
+// search input,button clicks
+{
+// function debounce(fun, delay){
+
+//   let timeout;
+
+//   return function(...args){
+//     clearTimeout(timeout);
+
+//     timeout = setTimeout(()=>{
+//       fun(...args);
+//     }, delay);
+//   };
+  
+// }
+
+
+
+
+// function search() {
+//   console.log("Searching...");
+// }
+
+// const debouncedSearch = debounce(search, 1000);
+
+// debouncedSearch();
+// debouncedSearch();
+// debouncedSearch();
+
+// OR 
+
+// const debouncedSearch = debounce(function (text) {
+//   console.log("Searching:", text);
+// }, 1000);
+
+// debouncedSearch("apple");
+// debouncedSearch("banana");
+// debouncedSearch("mango");
+
+
+
+
+
+// document.querySelector("input").addEventListener("click", debounce( function(e){
+//   console.log(e.target.value);
+// }, 1000) );
+
+// Flow:
+// debounce(fun, 1000) call hua
+// Ek function return hua
+// Event listener us function ko call karta hai
+// Event object args me aa jata hai
+// Fir delay ke baad original fun(e) run hota hai
+
+}
+
+
+
+
+//Throttling
+// Throttling is a technique that limits a function to execute at most once within a specified time interval 
+//Rate limiting API calls,scrolling a page
+{
+function throttle(fun, delay){
+  let timer =0;
+  return function(...args){
+    let now = Date.now();
+    if(now- timer >= delay){
+      timer = now;
+      fun(...args);
+    }
+  }
+}
+
+// document.querySelector("input").addEventListener("click", throttle( function(e){
+//   console.log(e.target.value);
+// }, 1000) );
+
+}
+
+
+
+
+//Lazzy Loading
+// Lazy loading is a technique where resources like images, components, or data are loaded only when they are needed instead of loading everything initially.
+{
+let imgs = document.querySelectorAll("img");
+
+// built-in browser API / constructor function
+// const observer = new IntersectionObserver(function(entries,observer){
+//   entries.forEach(function(entry){
+//     if(entry.isIntersecting){
+//       const img = entry.target;
+//       img.src = img.dataset.set;   // css me custom varible me store karte. data- ke aage varible ka naam. access img.dataset.variableName 
+//       img.classList.add("loaded"); //by defaut image opacity zero pe rakhte
+//       observer.unobserve(entry);
+//     }
+//   })
+// }, {
+//   root : null, //this define karta hai kis area me observer karana hai , null = screen
+//   threshold : 0.1  //10% imgae andar ayegi tab load hoga
+// });
+
+// imgs.forEach(function(img){
+//   observer.observe(img);
+// });
+
+//images ka src -> data-src me dalna. lazy ladding class me opacity 0 and loaded me opacity 1
+
+// Har image ko `observer.observe(img)` ke through observer me register kiya gaya.
+
+// Jab koi observed image viewport me aati hai aur threshold condition satisfy karti hai, tab browser callback function run karta hai aur affected images ko `entries` array me pass karta hai.
+
+}
+
+
+
+//Code Splitting
+// Code splitting is a technique where JavaScript code is divided into smaller chunks and loaded only when needed instead of loading the entire application at once.
+
+{
+//koi code ko hamko button dabane se ya badme load karna hai 
+
+// <script type="module" src="./heavy.js"></script>
+
+document.querySelector("button").addEventListener("click", async function(){
+  //import()  asynchrounous hota hai , isliye iske badme code pahle run hoga, isliue async await use karre
+  let heavyObject = await import("./heavy");   // heavy.js file me function ke aage "export" likhna
+  heavyObject.functionName();
+})
+}
+
+
+
+// Avoiding unnecessary DOM refresh, repaint
+{
+// const ul = document.querySelector("ul");
+// const spcae = document.createDocumentFragment();  //extra memory
+
+// for(let i =0; i< 10000; i++){
+//   const li = document.createElement("h1");
+//   li.textContent = i;
+//   space.appendChild(li);  //agar ul me hi append karte jate to DOM lag ho jata
+// }
+
+// ul.appendChild(space);  
+
+}
+
+
+
+
+// memory Leak : timer , addEventListener
+{
+// let count =0;
+
+// const int = setInterval(()=>{
+//   if(count< 10){
+//     count++;
+//     console.log(count);
+//   }else{
+//     // console.log("still chalra hai");
+//     // should be
+//     clearInterval(int);
+//   }
+// },500); //this will be keep executing until stopped. int banao aur clear jarur karna
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+//DOM ka code aur logic ka code alag rakhan chahiye, separation of concern
+// logic ko function me dalnena. simple
+
+
+
+
+
+//custom implementation of map
+{
+// .map() is an -array method- used to -create a new array- by transforming each element of an existing array.
+
+// const arr = [1,2,3,4,5,7];
+
+// function meraMap(arr, callback){
+//   let newarr =[];
+//   for(let i=0; i< arr.length; i++){
+//     // newarr.push(callback(arr[i]));
+//     newarr[i] = callback(arr[i]);
+//   }
+
+//   return newarr;
+// }
+
+// let result = meraMap(arr, (num)=> num+2);
+}
+
+
+
+//Call stack ( execution stack)
+//JS is single theaded, at a time , one work can be done.
+// JS and browser. featured provided by browser is called web apis ex. console aleart prompt setTimeout setInterval
