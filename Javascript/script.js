@@ -1,69 +1,63 @@
-/*
-TOPICS COVERED: 
-primitive datatype
-reference datatype
-spread operator
-iterable( array, string, object, map , set)
-for in loop 
-for of loop            ForEach is array method
-Object.keys(person) 1 array return
-Object.values(person) 1 array return
-Object.entries(person) 2 array return [ key, value]
-7 falsy values
-callback 
-promises
-types of function 4-4
-Object creation , retrieval (2 . ["n"]), addition 
-[value can be fun, obj, val]
-object.create(parent), Object.getPrototypeOf(child)
-Object.freeze(person) (no val change, no add, shallow freeze, no nested freeze), Object.seal(person) (value change, no add)
-for copying object : Object.assign({},{x:2},obj1,obj2) OR  {...obj} (both store nested object reference) OR JSON.parse(JSON.stringify(person)) better (no copy of set and date gadbad) OR StructuredClone(person) best
-Deconstructor [a,b,...rest], [a,,c] [a,b] [...arr,...arr2] merge, [a,b] =[x,y]swap , no confirmation of existence then  ?. is used
-set -> add has size delete clear
-map -> get set has delete 
-const user = undefined console.log(user?? "ashish") NULLISH
-typeof checks the primitive datatype of value
-typeof NaN === 'number' //true
-typeof {} [] array null ->  is object
-instanceof checks whether the object is created from specific constructor/class.  let arr = []; arr instanceof Array/Object/String
-Closure
-Explicity conversion
-Failed numerical operation -> NaN output
-Hoisting
-IIFE
-Arrays 9 methods
-[prop] in object
-obj.aa vs obj["aa"] 
-DOM    className html collection , querySelectorAll nodelist forEach forof
-innerText textContent* outerText
-Attribute ( getAttribute, . set, has , remove)
-kisi element ko DOM se remove karna hai to , element ko select karna aur .remove() .removeChild()
-DDM : .prepend(ab) .append(ab)
-select element ab.classList array classList[0] .add("blue") .remove .toggle .contains .length .value all classes in single string
-let ed = document.querySelectorAll("ul li:nth-child(2n)"); select every 2nd element
-Event listeners   addEventListener removeEL   , dblclick, click, change, submit, input, keydown    fileinput.click();
-mouseover, out, move (bubble)    mouseenter/mouseleave ( keydown, fileupload, mousemove, form, select file)
-Event Bubbling [ul pe event , li pe stop propagation]
-Event capturing
-Event Flow  [capturing, bubbling phase (defualt on). By default, JavaScript uses event bubbling. Capturing can be enabled by passing true]
-Form [ e.preventDefault(), iniline validation( autocomplete="off", required, minlenght,maxlength , not reliable), inp[0].value.length,regex.test("as@gmail") ]
-error dkhana hai to classs banan, display =none , style.display  "initial" jabb error aaye
-setTimeout(function, time) clearTimeout() setInterval() clearInterval
-Date is built in constructor function ( new Date(), getFullYear2026, Month0-11, date1-31, hours0-11, day0-6, minutes 0-59, second 0-59)
-localStorage, sessionStorage, cookies ( setItem("name","ash"), getItem, removeItem, clear(), document.cookie ="name=ash")
-Dark-light-mode script
-Scoping ( Js does not have dynamic scoping, it hass lexical scopiing. global and block scope)
-Execution Context ( its process, memory phase and execution phase)
-debouncing
-Real time seaching , card add, toaster 
-This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga , EventListener me jispe event laga hai wo(element))
-OOP
 
-
-
-
-
-
+// TOPICS COVERED: 
+// primitive datatype
+// reference datatype
+// spread operator
+// iterable( array, string, object, map , set)
+// for in loop 
+// for of loop            ForEach is array method
+// Object.keys(person) 1 array return
+// Object.values(person) 1 array return
+// Object.entries(person) 2 array return [ key, value]
+// 7 falsy values
+// callback 
+// promises
+// types of function 4-4
+// Object creation , retrieval (2 . ["n"]), addition 
+// [value can be fun, obj, val]
+// object.create(parent), Object.getPrototypeOf(child)
+// Object.freeze(person) (no val change, no add, shallow freeze, no nested freeze), Object.seal(person) (value change, no add)
+// for copying object : Object.assign({},{x:2},obj1,obj2) OR  {...obj} (both store nested object reference) OR JSON.parse(JSON.stringify(person)) better (no copy of set and date gadbad) OR StructuredClone(person) best
+// Deconstructor [a,b,...rest], [a,,c] [a,b] [...arr,...arr2] merge, [a,b] =[x,y]swap , no confirmation of existence then  ?. is used
+// set -> add has size delete clear
+// map -> get set has delete 
+// const user = undefined console.log(user?? "ashish") NULLISH
+// typeof checks the primitive datatype of value
+// typeof NaN === 'number' //true
+// typeof {} [] array null ->  is object
+// instanceof checks whether the object is created from specific constructor/class.  let arr = []; arr instanceof Array/Object/String
+// Closure
+// Explicity conversion
+// Failed numerical operation -> NaN output
+// Hoisting
+// IIFE
+// Arrays 9 methods
+// [prop] in object
+// obj.aa vs obj["aa"] 
+// DOM    className html collection , querySelectorAll nodelist forEach forof
+// innerText textContent* outerText
+// Attribute ( getAttribute, . set, has , remove)
+// kisi element ko DOM se remove karna hai to , element ko select karna aur .remove() .removeChild()
+// DDM : .prepend(ab) .append(ab)
+// select element ab.classList array classList[0] .add("blue") .remove .toggle .contains .length .value all classes in single string
+// let ed = document.querySelectorAll("ul li:nth-child(2n)"); select every 2nd element
+// Event listeners   addEventListener removeEL   , dblclick, click, change, submit, input, keydown    fileinput.click();
+// mouseover, out, move (bubble)    mouseenter/mouseleave ( keydown, fileupload, mousemove, form, select file)
+// Event Bubbling [ul pe event , li pe stop propagation]
+// Event capturing
+// Event Flow  [capturing, bubbling phase (defualt on). By default, JavaScript uses event bubbling. Capturing can be enabled by passing true]
+// Form [ e.preventDefault(), iniline validation( autocomplete="off", required, minlenght,maxlength , not reliable), inp[0].value.length,regex.test("as@gmail") ]
+// error dkhana hai to classs banan, display =none , style.display  "initial" jabb error aaye
+// setTimeout(function, time) clearTimeout() setInterval() clearInterval
+// Date is built in constructor function ( new Date(), getFullYear2026, Month0-11, date1-31, hours0-11, day0-6, minutes 0-59, second 0-59)
+// localStorage, sessionStorage, cookies ( setItem("name","ash"), getItem, removeItem, clear(), document.cookie ="name=ash")
+// Dark-light-mode script
+// Scoping ( Js does not have dynamic scoping, it hass lexical scopiing. global and block scope)
+// Execution Context ( its process, memory phase and execution phase)
+// debouncing
+// Real time seaching , card add, toaster 
+// This keyword ( global win , function win, method ES5 obj, method arrowfun win, method ES5 -> ES5 win, method ES5 -> arrowfun obj, class me this obj instnace hoga , EventListener me jispe event laga hai wo(element))
+// OOP
 
 
 
@@ -74,13 +68,26 @@ OOP
 
 
 /*
-s
+
 //() {} [] are reference , rest are primitive
 
 // Data types in Javascript s
 
 // 1. Primitive data type 
 // 2. Reference data type - [],{},()- It is not copied directly it just creates a reference (To copy we can use spread operator)
+
+
+//Function Scope
+// var is function scoped
+// var function ke bahar accessible nahi hota. {} block ke bahar hota hai .
+// function fun(){ var a = 10} console.log(a); //error
+// if(true){ var a =10}  console.log(a) // 10
+
+// Block Scoped
+//let aur const block scoped hai. matlab curly braces ke bahar accessible nahi hai 
+// function fun(){ let a = 10} console.log(a); //error
+// if(true){ let a =10}  console.log(a) // referenceError
+
 
 
 var a= 10; var b=a;  //b ko chnage karne pe a change nahi hoga
@@ -308,6 +315,7 @@ connectToServer()
 .then((res)=>{
   console.log(res);
 })
+
 
 */
 
@@ -2659,7 +2667,134 @@ document.querySelector("button").addEventListener("click", async function(){
 }
 
 
-
-//Call stack ( execution stack)
 //JS is single theaded, at a time , one work can be done.
-// JS and browser. featured provided by browser is called web apis ex. console aleart prompt setTimeout setInterval
+// JS and browser. featured provided by browser is called web apis ex. console alert prompt setTimeout setInterval
+
+
+
+
+//----------------------------Interview Quetions
+
+
+
+// 1. WHY LET AND CONST WERE INTRODUCED IN ES6?
+
+// ES6 (2015) se pehle JavaScript me sirf "var" hota tha.
+
+// Var ki problems:
+// 1. Access before declaration (Hoisting issue) no error. bade codebase me, agar vairble ko declaration se pahle access karliya to error nahi aata tha, isliey ES6 me let aur const aaya. 
+// 2. Accidental redeclaration
+// 3. Loop + asybc code Closure problem
+
+
+//var age = 19;
+//var age = 12; 
+// accidental redecalration , error nahi aata tha.
+
+// In problems ko solve karne ke liye ES6 me:
+// - let
+// - const
+
+// introduce kiye gaye.
+
+
+
+// JAVASCRIPT EXECUTION PHASES
+// JavaScript code 2 phases me execute hota hai:
+
+// 1. Memory Creation Phase
+// 2. Execution Phase
+
+// Memory Creation Phase
+// Engine pura code scan karta hai.
+// - Variables ke liye memory allocate karta hai.
+// - Functions ko memory me store karta hai.
+
+// Example:
+// var a = 10;
+
+// Memory Phase:
+// a -> undefined
+
+// B) Execution Phase
+// Code line by line execute hota hai.
+// a = 10
+// Final value:
+// a -> 10
+
+
+
+
+
+//Call stack ( execution stack), microqueue( promises , then catch finally callback), macroqueue ( asynchronous code, setTImeout , interval)
+// execution -> call stack -> microqueue -> macroqueue -> Event Loop
+
+
+
+
+// EX.
+// console.log("A");
+
+// setTimeout(()=>{
+//   console.log(B);
+// },0);
+
+// Promise.resolve().then(()=>{
+//   console.log("C");
+// });
+
+// console.log("D");
+
+// sync code -> call stack -> micro -> macro
+// output : A D C B
+
+
+
+
+//map() array method, original array ke size jitna array return karta. agar kisi element pe return nahi hua to "undefined"
+// [1,2,3].map((elem)=>{ if(num > 1 ) return num*2})    //output : [undefiner, 4,6]
+
+
+// Removing duplicate
+// const unique = [...new Set([1,2,3,3,3])];    //output: [1,2,3]
+
+
+
+// for ( var i = 1; i< 3;i++ ){
+// setTimeout(()=>{
+//   console.log(i);
+// },100);
+// }
+
+// output : 3,3,3
+// var ek hi varible banta aur uski value update karte jata. sabhi callback usi value ko refer karte.
+// development me dikkat deta , isliye let aur const introduce kiya tha
+
+// for ( let i = 1; i< 3;i++ ){
+// setTimeout(()=>{
+//   console.log(i);
+// },100);
+// }
+
+// output : 1 2 3 
+// har iteration me let alg varible banata hai ( new binding create karta). taki closure aur async callback expected vlaue capture kar sake
+
+
+
+// var a; declaration
+//  a = 26; initialization
+
+
+
+
+//Hoisting
+// Hoisting is JavaScript's behavior of "allocating memory for declarations" during the Memory Creation Phase before code execution begins.
+// JavaScript execution se pehle variables aur functions ke liye memory allocate karna
+
+
+// Temporal Dead Zone(TDZ)
+// TDZ = Variable create(memoery allocated) ho chuka hai lekin initialize nahi hua.
+// var, let, and const teeno hoist hote hain. Difference ye hai ki var memory phase me undefined se initialize ho jata hai, jabki let aur const uninitialized state me rehte hain aur declaration se pehle access karne par TDZ ki wajah se ReferenceError dete hain.
+
+
+
