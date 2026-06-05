@@ -1,4 +1,4 @@
-import Parent from "./PropsPassing/Parent";
+import Parent from "./useState/Parent";
 
 const App =()=>{
   return (

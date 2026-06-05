@@ -1,5 +1,22 @@
 Shote notes for React
 
+Topics covered:
+
+About react
+Components
+Props, prop drilling
+Children
+State
+Rendering Cycle
+Virtual DOM
+Reconciliation
+React.memo
+useEffect
+Dependency Arrays
+Cleanup Functions
+Stale Closures
+useRef
+
 React is javascript library, not a framework. libary has prewritten code, that developer uses to make app faster.
 It used component based architecture. 
 Created by Facebook 2013.
@@ -48,4 +65,135 @@ It returns object.
 props are read only and immutable.
 props are one way only.
 Any content passed between component tag is automatically avaible in children prop.
+
+
+State
+State is built in react mechanism used to store and manage component specific data. when state changes , React rerender component.
+
+
+---------------------------- useState
+It is React hook that allow functional component to manage state. useState is return array containing current value andn setter function
+Rerender does not neccessarily means real DOM is updated. only changed  part is updated.
+temporary update until reloaded.
+State update -> component rerender -> new DOM -> Diffing -> update real DOM
+
+Function update : setCount(prev => prev +1)
+
+Object update setUser({...user, age : 18})
+
+React schedules the state update
+
+Rerender means rerun of functional component function
+
+parent jab rerender hota to har bar child bhi hota. isliey react.memo use karte
+React.memo use karna ke baad child unnecesary reredner avoid karega agar uska prop unchanged hai. shallow comparison hota, means primitive data type ki value compare hoti aur reference data type ke reference.
+array , object aur function jab child me pass karte to har bar naya object/array/function banta isliye new memory har baat allocate hoti har render pe isliey react.memo usko new prop dekhta aru  child component har bar rerender hota
+iska solution hai useMemo(), useCallback()
+
+
+
+
+
+
+
+
+-----------------------  useEffect
+DA, cleanup function
+
+Definition:
+A React Hook used to perform side effects in functional components.
+
+Why use it?
+To execute logic that should happen after rendering, such as:
+- API calls
+- Timers
+- Event listeners
+- DOM manipulation
+- LocalStorage operations
+
+Key Point:
+React first renders the UI, updates the DOM, and then runs useEffect.
+
+Depeding upon dependency array its run is controlled. means if no DA passed , it will run aftr initial render and in each rerender. FI empty DA passed, it will run only once after initial render. if values are passed ot DA array , then it run after initial render adn whenever this value changes.
+
+
+State Change decides:
+→ Whether a component re-renders
+
+Dependency Array decides:
+→ Whether an effect re-runs after a render
+
+
+
+
+
+
+
+
+Cleanup Function
+
+Definition:
+A function returned from useEffect.
+
+When does it run?
+1. Before the effect re-runs
+2. When the component unmounts
+
+Why is it used?
+- Remove event listeners
+- Clear timers
+- Prevent memory leaks
+
+React runs the cleanup function before executing the next effect to remove any side effects created by the previous effect, such as timers, subscriptions, or event listeners. This prevents memory leaks
+
+
+
+
+
+Stale Closure
+
+What is a stale closure?
+occurs When a callback (setInterval, setTimeout, event listener, useEffect) keeps using variables from an older render even after state has changed.
+
+Solution : Dependency array prop pass and useRef
+
+
+useRef
+
+Definition:
+A React Hook that stores a mutable value that persists across renders without causing re-renders.
+Updating ref.current does not trigger a component re-render.
+
+Syntax:
+const ref = useRef(initialValue);
+
+Returns:
+{
+  current: initialValue
+}
+
+Common Uses:
+1. DOM access
+2. Avoid stale closures
+3. Persist mutable data
+
+Normal Variable/Object:
+- Recreated on every render
+- Value does not persist
+
+useRef:
+- Same object across renders
+- Value persists across render
+- Updating .current does not trigger re-render
+- Used when UI does not change
+
+useState:
+- Value persists across renders
+- Updating value triggers re-render
+- Used when UI changes.
+
+
+
+
+
 
