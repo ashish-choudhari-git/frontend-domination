@@ -528,7 +528,9 @@ let num = new Set([1,2,2,3]);    // only unique elem  //  removng duplicate //se
 
 //A closure in javascript is created when an inner function remembers and access varibales of its outer function scope evenn after outer function has finished executing.
 
-//inner funciton apne lexical scope ke varibales of yaad rakhta hai
+//  A closure is a function bundled together with the variables from the scope in which it was created.
+
+// inner funciton apne lexical scope ke varibales of yaad rakhta hai
 
 // function createCounter() {
 //   let count = 0; // private variable
@@ -2699,6 +2701,8 @@ document.querySelector("button").addEventListener("click", async function(){
 
 
 
+
+
 // JAVASCRIPT EXECUTION PHASES
 // JavaScript code 2 phases me execute hota hai:
 
@@ -2730,8 +2734,6 @@ document.querySelector("button").addEventListener("click", async function(){
 // execution -> call stack -> microqueue -> macroqueue -> Event Loop
 
 
-
-
 // EX.
 // console.log("A");
 
@@ -2760,6 +2762,8 @@ document.querySelector("button").addEventListener("click", async function(){
 
 
 
+
+
 // for ( var i = 1; i< 3;i++ ){
 // setTimeout(()=>{
 //   console.log(i);
@@ -2778,6 +2782,7 @@ document.querySelector("button").addEventListener("click", async function(){
 
 // output : 1 2 3 
 // har iteration me let alg varible banata hai ( new binding create karta). taki closure aur async callback expected vlaue capture kar sake
+
 
 
 
