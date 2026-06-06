@@ -205,3 +205,4 @@ function App() {
 // normal variable or object are recreated on  every render.
 //changing useRef value does not cause rerender
 //changing normal variable or object value does not cause rerender
+// all renders share same object refrecne, so stale closure always gets latest value

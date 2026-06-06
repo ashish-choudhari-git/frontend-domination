@@ -1,11 +1,19 @@
-import Parent from "./useState/Parent";
+import Context from "./ContextAPI/Context";
 
-const App =()=>{
+function App() {
   return (
-    <div>
-       <Parent/>
-    </div>
-  )
+    <Context />
+
+  );
 }
 
 export default App;
+
+
+
+
+{/* <UserProvider>
+  <Navbar />
+  <Profile />
+  <Dashboard />
+</UserProvider> */}

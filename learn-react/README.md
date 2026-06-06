@@ -1,5 +1,7 @@
 Shote notes for React
 
+
+
 Topics covered:
 
 About react
@@ -16,6 +18,12 @@ Dependency Arrays
 Cleanup Functions
 Stale Closures
 useRef
+Controlled Components = form
+Form Handling
+Context API
+
+
+
 
 React is javascript library, not a framework. libary has prewritten code, that developer uses to make app faster.
 It used component based architecture. 
@@ -182,8 +190,7 @@ Normal Variable/Object:
 - Value does not persist
 
 useRef:
-- Same object across renders
-- Value persists across render
+- Same object across renders. Value persists across render. All renders share the same ref object. so stale closure gets latest value
 - Updating .current does not trigger re-render
 - Used when UI does not change
 
@@ -196,4 +203,68 @@ useState:
 
 
 
+----------- FORM
 
+Controlled Component
+
+Definition:
+A controlled component is a form element whose value is managed by React state.
+
+Requirements:
+1. value prop
+2. onChange handler, without this Input becomes read-only
+
+Flow:
+User Input
+↓
+onChange
+↓
+State Update
+↓
+Re-render
+↓
+Updated Input value
+
+e.target.value  e = event object , target is input , value is current inp val
+
+
+
+
+
+
+
+Prop Drilling
+
+Definition:
+Passing props through multiple intermediate components to reach a deeply nested component.
+
+Problem:
+Components that don't need the data still receive and forward it.
+
+Context API
+
+Definition:
+A React feature that allows data sharing across the component tree without passing props manually. Context API solves prop drilling
+
+Steps:
+1. createContext()
+2. Provider
+3. useContext()
+
+
+When Should You Use Context?
+Theme
+Current User
+Language
+Authentication State
+
+When Should You NOT Use Context?
+Chat messages , Large forms , Complex server data
+
+Every tiem value inside context changes, every single component consuming content will rerender. agar wrapped me koi use nahi karra to wo reredner nahi hoga
+
+The useContext hook returns the default value only when a component reads the context but has no matching Context Provider above it in the component tree.The default value itself is defined when you first call createContext(defaultValue)
+
+contextProvider ko ek component me dalte, {children}. then wo Provider component app.jsx other component ko wrap karta. to wrapped components ko values mil jati. isse Provider component redner hota hai.
+
+useContext read the value from its nearest provider component in component tree
